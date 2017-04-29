@@ -6,3 +6,8 @@ echo "function cs () {" >> ./bashrc
 echo "  cd "$@" && ls" >> ./bashrc
 echo "}" >> ./bashrc
 
+sudo apt-get install- -y vim
+
+echo "#set four tabs to expand in vim" >> .vimrc
+echo "set tabstop=4" >> .vimrc
+echo "set expandtab" >> .vimrc
