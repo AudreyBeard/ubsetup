@@ -6,7 +6,14 @@ echo 'function cs () {' >> ~/.bashrc
 echo '  cd "$@" && ls' >> ~/.bashrc
 echo '}' >> ~/.bashrc
 
-sudo apt-get install- -y vim
+# gitclone <url> makes git clone easier
+echo '# GITCLONE: makes git cloning easier and faster' >> ~/.bashrc
+echo 'function gitclone () {' >> ~/.bashrc
+echo '  git clone https://github.com/"$@"' >> ~/.bashrc
+echo '}' >> ~/.bashrc
+
+# Get vim
+sudo apt-get install -y vim
 
 echo "#set four tabs to expand in vim" >> .vimrc
 echo "set tabstop=4" >> .vimrc
