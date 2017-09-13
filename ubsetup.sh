@@ -5,6 +5,7 @@ echo '# CS: combines cd and ls in one easy command' >> ~/.bashrc
 echo 'function cs () {' >> ~/.bashrc
 echo '  cd "$@" && ls' >> ~/.bashrc
 echo '}' >> ~/.bashrc
+. ~/.bashrc
 
 # gitclone <url> makes git clone easier
 echo '# GITCLONE: makes git cloning easier and faster' >> ~/.bashrc
@@ -17,6 +18,10 @@ sudo apt-get install -y vim
 # Set vim indent to four spaces
 echo "set tabstop=4" >> .vimrc
 echo "set expandtab" >> .vimrc
+# Show line numbers
+echo "set number" >> .vimrc
+# Set shift width to four spaces
+echo "set sw=4" >> .vimrc
 
 # Get autoconf & automake
 #sudo apt-get install autoconf
