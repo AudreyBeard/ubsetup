@@ -16,12 +16,12 @@ echo '}' >> ~/.bashrc
 # Get vim
 sudo apt-get install -y vim
 # Set vim indent to four spaces
-echo "set tabstop=4" >> .vimrc
-echo "set expandtab" >> .vimrc
+echo "set tabstop=4" >> ~/.vimrc
+echo "set expandtab" >> ~/.vimrc
 # Show line numbers
-echo "set number" >> .vimrc
+echo "set number" >> ~/.vimrc
 # Set shift width to four spaces
-echo "set sw=4" >> .vimrc
+echo "set sw=4" >> ~/.vimrc
 . ~/.vimrc
 
 # Get autoconf & automake
