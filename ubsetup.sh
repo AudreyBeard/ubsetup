@@ -35,8 +35,16 @@ echo "set sw=4" >> ~/.vimrc
 mkdir -p .local
 
 # Install pip
-sudo apt-get install -y python-pip
+sudo apt-get install -y python3-pip
 
+
+# Use python3 as default in virtual environments
+export $VIRTUALENV_PYTHON=/usr/bin/python3
+
+	
+
+# Tell me what to do
+echo '---------------------- ALL DONE -----------------------'
 echo 'Go download f.lux, then make it autostart with .profile'
 
 # Get autoconf & automake
