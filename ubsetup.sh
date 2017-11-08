@@ -8,9 +8,16 @@ echo '}' >> ~/.bashrc
 
 # gitclone <url> makes git clone easier
 echo '# GITCLONE: makes git cloning easier and faster' >> ~/.bashrc
-echo 'function gitclone () {' >> ~/.bashrc
+echo 'function gitclone-https () {' >> ~/.bashrc
 echo '  git clone https://github.com/"$@"' >> ~/.bashrc
 echo '}' >> ~/.bashrc
+
+# gitclone <url> makes git clone easier
+echo '# GITCLONE: makes git cloning easier and faster' >> ~/.bashrc
+echo 'function gitclone-ssh () {' >> ~/.bashrc
+echo '  git clone git@github.com/"$@".git' >> ~/.bashrc
+echo '}' >> ~/.bashrc
+
 . ~/.bashrc
 
 # Get vim
@@ -23,6 +30,14 @@ echo "set number" >> ~/.vimrc
 # Set shift width to four spaces
 echo "set sw=4" >> ~/.vimrc
 . ~/.vimrc
+
+# Make a .local directory
+mkdir -p .local
+
+# Install pip
+sudo apt-get install -y python-pip
+
+echo 'Go download f.lux, then make it autostart with .profile'
 
 # Get autoconf & automake
 #sudo apt-get install autoconf
