@@ -25,15 +25,16 @@ echo "alias gitclone='gitclone-https'" >> ~/.bashrc
 # Make a .local directory
 mkdir -p .local
 
+
+# Python stuff
 # Install pip
 sudo apt-get install -y python3-pip
-
 
 # Use python3 as default in virtual environments
 export $VIRTUALENV_PYTHON=/usr/bin/python3
 
 	
-
+# Additional packages
 # Tell me what to do
 echo '---------------------- ALL DONE -----------------------'
 echo 'Go download f.lux or redshift, then make it autostart with .profile'
