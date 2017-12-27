@@ -18,7 +18,7 @@ echo "set sw=4" >> ~/.vimrc
 echo '' >> ~/.vimrc
 
 # Show line numbers
-echo '" Numbered lines' >> ~/.bashrc
+echo '" Numbered lines' >> ~/.vimrc
 echo "set number" >> ~/.vimrc
 
 . ~/.vimrc
