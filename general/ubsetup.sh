@@ -15,7 +15,7 @@ echo '}' >> ~/.bashrc
 # gitclone <url> makes git clone easier
 echo '# GITCLONE: makes git cloning easier and faster' >> ~/.bashrc
 echo 'function gitclone-ssh () {' >> ~/.bashrc
-echo '  git clone git@github.com/"$@".git' >> ~/.bashrc
+echo '  git clone git@github.com:"$@".git' >> ~/.bashrc
 echo '}' >> ~/.bashrc
 
 echo "alias gitclone='gitclone-https'" >> ~/.bashrc
