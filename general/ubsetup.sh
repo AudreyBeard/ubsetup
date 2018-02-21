@@ -29,11 +29,16 @@ mkdir -p .local
 # Python stuff
 # Install pip
 sudo apt-get install -y python3-pip
+
+# install i3 and associated stuff
 sudo apt-get install i3-wm
 sudo apt-get install dunst
 sudo apt-get install i3lock
 sudo apt-get install i3status
 sudo apt-get install suckless-tools
+
+# Make sure Nautilus doesn't launch gnome desktop
+gsettings set org.gnome.desktop.background show-desktop-icons false
 
 # Use python3 as default in virtual environments
 export $VIRTUALENV_PYTHON=/usr/bin/python3
