@@ -36,6 +36,11 @@ mkdir -p .local
 
 # Install pip
 sudo apt-get install -y python3-pip
+sudo apt-get install i3-wm
+sudo apt-get install dunst
+sudo apt-get install i3lock
+sudo apt-get install i3status
+sudo apt-get install suckless-tools
 
 
 # Use python3 as default in virtual environments
