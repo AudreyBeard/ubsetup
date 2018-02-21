@@ -15,25 +15,18 @@ echo '}' >> ~/.bashrc
 # gitclone <url> makes git clone easier
 echo '# GITCLONE: makes git cloning easier and faster' >> ~/.bashrc
 echo 'function gitclone-ssh () {' >> ~/.bashrc
-echo '  git clone git@github.com/"$@".git' >> ~/.bashrc
+echo '  git clone git@github.com:"$@".git' >> ~/.bashrc
 echo '}' >> ~/.bashrc
 
+echo "alias gitclone='gitclone-https'" >> ~/.bashrc
 . ~/.bashrc
 
-# Get vim
-sudo apt-get install -y vim
-# Set vim indent to four spaces
-echo "set tabstop=4" >> ~/.vimrc
-echo "set expandtab" >> ~/.vimrc
-# Show line numbers
-echo "set number" >> ~/.vimrc
-# Set shift width to four spaces
-echo "set sw=4" >> ~/.vimrc
-. ~/.vimrc
 
 # Make a .local directory
 mkdir -p .local
 
+
+# Python stuff
 # Install pip
 sudo apt-get install -y python3-pip
 sudo apt-get install i3-wm
@@ -42,15 +35,14 @@ sudo apt-get install i3lock
 sudo apt-get install i3status
 sudo apt-get install suckless-tools
 
-
 # Use python3 as default in virtual environments
 export $VIRTUALENV_PYTHON=/usr/bin/python3
 
 	
-
+# Additional packages
 # Tell me what to do
 echo '---------------------- ALL DONE -----------------------'
-echo 'Go download f.lux, then make it autostart with .profile'
+echo 'Go download f.lux or redshift, then make it autostart with .profile'
 
 # Get autoconf & automake
 #sudo apt-get install autoconf
