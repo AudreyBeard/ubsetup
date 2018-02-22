@@ -184,6 +184,23 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #404040
 
 # Volume control
-bindsym Control+Up exec "pactl set-sink-volume 0 +5%"
-bindsym Control+Down exec "pactl set-sink-volume 0 -5%"
-bindsym Control+Left exec "pactl set-sink-mute 0 toggle"
+bindsym Control+$sup+Up exec "pactl set-sink-volume 4 +5%"
+bindsym Control+$sup+Down exec "pactl set-sink-volume 4 -5%"
+bindsym Control+$sup+Left exec "pactl set-sink-mute 4 toggle"
+
+
+# Suspend, lock, etc.
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $HOME/.scripts/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id $HOME/.scripts/i3ext logout, mode "default"
+    bindsym s exec --no-startup-id $HOME/.scripts/i3ext suspend, mode "default"
+    bindsym h exec --no-startup-id $HOME/.scripts/i3ext hibernate, mode "default"
+    bindsym r exec --no-startup-id $HOME/.scripts/i3ext reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3ext shutdown, mode "default"
+
+    # Back to normal
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym Control+Shift+Escape mode "$mode_system"
