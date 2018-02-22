@@ -182,3 +182,7 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #404040
 
+# Volume control
+bindsym Control+Up exec "pactl set-sink-volume 0 +5%"
+bindsym Control+Down exec "pactl set-sink-volume 0 -5%"
+bindsym Control+Left exec "pactl set-sink-mute 0 toggle"
