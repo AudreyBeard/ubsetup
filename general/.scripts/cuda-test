@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Runs CUDA check. If it fails, let me know via notification.  
+
+CUDA_TEST_RESULT_FILE=$HOME/tests/cuda-test-result.txt
+CUDA_TEST=$HOME/Packages/cuda/NVIDIA_CUDA-9.0_Samples/bin/x86_64/linux/release/deviceQuery
+
+# Location of test | get last line > redirect to .txt
+$CUDA_TEST | sed -e '$!d' > $CUDA_TEST_RESULT_FILE
+
+# Store test result in variable
+RESULT=`cat $CUDA_TEST_RESULT_FILE`
+
+#echo $RESULT
+# If result is a failure, send notification and print complete test to .txt
+if [ "$RESULT" != "Result = PASS" ]; then
+    notify-send "Failed CUDA device query"
+else
+    notify-send "CUDA OK"
+fi
+
+# Print to file for future reference if needed
+$CUDA_TEST > $CUDA_TEST_RESULT_FILE
