@@ -17,5 +17,4 @@ alias ssh-pi='ssh pi@192.168.42.1'
 alias algo-hw='evince ~/Documents/Books/Algorithm\ Design\ by\ Jon\ Kleinberg\,\ Eva\ Tardos.pdf'
 #alias nautilus='nautilus --no-desktop'
 
-alias suspend='i3lock && systemctl suspend'
-
+alias wifi='nmcli c up'

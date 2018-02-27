@@ -163,7 +163,8 @@ bar {
             statusline #99ffff
             separator #ffffff
             focused_workspace #ff99ff #ff99ff #000000
-            inactive_workspace #99e6ff #99e6ff #000000
+            active_workspace #99e6ff #99e6ff #000000
+            #inactive_workspace #99e6ff #99e6ff #000000
         }
 
         separator_symbol "|"
@@ -183,24 +184,31 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #404040
 
-# Volume control
-bindsym Control+$sup+Up exec "pactl set-sink-volume 1 +5%"
-bindsym Control+$sup+Down exec "pactl set-sink-volume 1 -5%"
-bindsym Control+$sup+Left exec "pactl set-sink-mute 1 toggle"
+# Volume control. Since I change sinks so frequently
+bindsym Control+$sup+Up exec "pactl set-sink-volume 0 +5% && pactl set-sink-volume 1 +5% && pactl set-sink-volume 2 +5%"
+bindsym Control+$sup+Down exec "pactl set-sink-volume 0 -5% && pactl set-sink-volume 1 -5% && pactl set-sink-volume 2 -5%"
+bindsym Control+$sup+Left exec "pactl set-sink-mute 0 toggle && pactl set-sink-mute 1 toggle && pactl set-sink-mute 2 toggle"
 
 
 # Suspend, lock, etc.
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $HOME/.scripts/i3exit lock, mode "default"
-    bindsym e exec --no-startup-id $HOME/.scripts/i3ext logout, mode "default"
-    bindsym s exec --no-startup-id $HOME/.scripts/i3ext suspend, mode "default"
-    bindsym h exec --no-startup-id $HOME/.scripts/i3ext hibernate, mode "default"
-    bindsym r exec --no-startup-id $HOME/.scripts/i3ext reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3ext shutdown, mode "default"
+    bindsym e exec --no-startup-id $HOME/.scripts/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id $HOME/.scripts/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id $HOME/.scripts/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id $HOME/.scripts/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id $HOME/.scripts/i3exit shutdown, mode "default"
 
     # Back to normal
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym Control+Shift+Escape mode "$mode_system"
+
+# Screenshot (selection)
+bindsym --release $mod+x exec --no-startup-id import /tmp/latest-screenshot.png
+bindsym $sup+c exec google-chrome
+bindsym $sup+f exec firefox
+bindsym $sup+p exec firefox --private-window
+bindsym $sup+t exec thunderbird
