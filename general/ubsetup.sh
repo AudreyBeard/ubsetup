@@ -37,7 +37,7 @@ sudo apt-get install i3lock
 sudo apt-get install i3status
 sudo apt-get install suckless-tools
 
-# Make sure Nautilus doesn't launch gnome desktop
+# Make sure Nautilus doesn't launch gnome desktop to play nice with i3
 gsettings set org.gnome.desktop.background show-desktop-icons false
 
 # Use python3 as default in virtual environments
