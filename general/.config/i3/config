@@ -208,7 +208,10 @@ bindsym Control+Shift+Escape mode "$mode_system"
 
 # Screenshot (selection)
 bindsym --release $mod+x exec --no-startup-id import /tmp/latest-screenshot.png
+
+# run commonly-used programs
 bindsym $sup+c exec google-chrome
 bindsym $sup+f exec firefox
 bindsym $sup+p exec firefox --private-window
 bindsym $sup+t exec thunderbird
+bindsym $sup+s exec signal-desktop
