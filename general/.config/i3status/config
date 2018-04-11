@@ -9,6 +9,11 @@
 general {
         colors = true
         interval = 5
+        color_good = "#FFFFFF"
+        color_degraded = "#555555"
+        color_bad = "#FF0000"
+        # Defined in ~/.config/i3/config
+        #color_separator = "#555555"
 }
 
 #order += "ipv6"
@@ -60,8 +65,8 @@ ethernet _first_ {
 
 battery 0 {
         format = "%status %percentage %remaining"
-		status_chr = "⚡ "
-        #status_bat = "🔋"
+		status_chr = "(+)"
+        status_bat = "(-)"
 		low_threshold = 25	
         threshold_type = "time"
         hide_seconds = true

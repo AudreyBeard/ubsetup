@@ -14,7 +14,11 @@ set $sup Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 10
+#font pango:monospace 10
+#font pango:Gomme Regular
+#font pango:bitocra13 Regular
+font pango:Ohsnap Regular
+#font pango:kates Regular
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -68,10 +72,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Control+h split h
+bindsym $mod+Shift+n split h
 
 # split in vertical orientation
-bindsym $mod+Control+v split v
+bindsym $mod+Shift+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -99,7 +103,7 @@ bindsym $mod+2 workspace 2: www
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
+bindsym $mod+6 workspace 6: game
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9: work
@@ -111,7 +115,7 @@ bindsym $mod+Shift+2 move container to workspace 2: www
 bindsym $mod+Shift+3 move container to workspace 3
 bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+6 move container to workspace 6: game
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9: work
@@ -124,7 +128,89 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
+
+#--  Custom Commands --#
+# run commonly-used programs 
+bindsym $sup+c exec google-chrome
+bindsym $sup+f exec firefox
+bindsym $sup+p exec firefox --private-window
+bindsym $sup+t exec thunderbird
+bindsym $sup+s exec signal-desktop
+
+# Screenshot (selection)
+bindsym --release $mod+x exec --no-startup-id import /tmp/latest-screenshot.png
+
+# Volume control. Since I change sinks so frequently, do it for a lot
+bindsym Control+$sup+Up exec "pactl set-sink-volume 0 +5% && pactl set-sink-volume 1 +5% && pactl set-sink-volume 2 +5%"
+bindsym Control+$sup+Down exec "pactl set-sink-volume 0 -5% && pactl set-sink-volume 1 -5% && pactl set-sink-volume 2 -5%"
+bindsym Control+$sup+Left exec "pactl set-sink-mute 0 toggle && pactl set-sink-mute 1 toggle && pactl set-sink-mute 2 toggle"
+# Modeselektor
+bindsym Control+Shift+Escape mode "$mode_system"
+bindsym $mod+r mode "resize"
+
+
+
+#-- Configuration --#
+assign [class="Steam"] → 6: game
+workspace "6: game" output HDMI-1-2
+assign [class="Firefox"] → 2: www
+
+# Middle button over titlebar kills window (on release)
+#bindsym --release button2 kill
+
+# Colors are #rrggbb
+# class                 border  backgr. text    indicator child_border
+client.focused          #000000 #FFFFFF #000000 #000000   #ffffff
+client.focused_inactive #333333 #333333 #FFFFFF #333333   #333333
+client.unfocused        #333333 #333333 #888888 #333333   #333333
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+#client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.background       #000000
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status
+        i3bar_command i3bar -t
+        position top
+        tray_output primary
+
+        colors {
+            background #000000
+            #background #1d2021a0
+            statusline #ffffff
+            separator #333333
+
+            # Type             Border   Backgr.  Text
+                                        #ff99ff
+            focused_workspace  #FFFFFF  #000000  #FFFFFF
+            active_workspace   #000000  #000000  #FFFFFF
+            inactive_workspace #000000  #000000  #FFFFFF
+            urgent_workspace   #FFFFFF  #FFFFFF  #000000
+        }
+
+        separator_symbol "|"
+
+}
+
+
+#-- Modes --#
+
+# Suspend, lock, etc.
+set $mode_system SYSTEM (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $HOME/.scripts/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id $HOME/.scripts/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id $HOME/.scripts/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id $HOME/.scripts/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id $HOME/.scripts/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id $HOME/.scripts/i3exit shutdown, mode "default"
+
+    # Back to normal
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -148,70 +234,16 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        font pango:monospace 11
-        position top
-        status_command i3status
-        tray_output primary
+#-- A E S T H E T I C --#
+# Gaps 
+gaps inner 5
+gaps outer 0
+smart_gaps on
 
-        colors {
-            background #000000
-            statusline #99ffff
-            separator #ffffff
-            focused_workspace #ff99ff #ff99ff #000000
-            active_workspace #99e6ff #99e6ff #000000
-            #inactive_workspace #99e6ff #99e6ff #000000
-        }
+# Turn off window titlebar with gaps
+for_window [class="^.*"] border pixel 1
 
-        separator_symbol "|"
+# No gaps for single-window containers
+hide_edge_borders smart_no_gaps
 
-}
-
-# Middle button over titlebar kills window (on release)
-bindsym --release button2 kill
-
-# Colors are #rrggbb
-# class                 border  backgr. text    indicator child_border
-client.focused          #ff99ff #ff99ff #000000 #99ff99   #99e6ff
-client.focused_inactive #99e6ff #99e6ff #000000 #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
-client.background       #404040
-
-# Volume control. Since I change sinks so frequently
-bindsym Control+$sup+Up exec "pactl set-sink-volume 0 +5% && pactl set-sink-volume 1 +5% && pactl set-sink-volume 2 +5%"
-bindsym Control+$sup+Down exec "pactl set-sink-volume 0 -5% && pactl set-sink-volume 1 -5% && pactl set-sink-volume 2 -5%"
-bindsym Control+$sup+Left exec "pactl set-sink-mute 0 toggle && pactl set-sink-mute 1 toggle && pactl set-sink-mute 2 toggle"
-
-
-# Suspend, lock, etc.
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id $HOME/.scripts/i3exit lock, mode "default"
-    bindsym e exec --no-startup-id $HOME/.scripts/i3exit logout, mode "default"
-    bindsym s exec --no-startup-id $HOME/.scripts/i3exit suspend, mode "default"
-    bindsym h exec --no-startup-id $HOME/.scripts/i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id $HOME/.scripts/i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id $HOME/.scripts/i3exit shutdown, mode "default"
-
-    # Back to normal
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym Control+Shift+Escape mode "$mode_system"
-
-# Screenshot (selection)
-bindsym --release $mod+x exec --no-startup-id import /tmp/latest-screenshot.png
-
-# run commonly-used programs
-bindsym $sup+c exec google-chrome
-bindsym $sup+f exec firefox
-bindsym $sup+p exec firefox --private-window
-bindsym $sup+t exec thunderbird
-bindsym $sup+s exec signal-desktop

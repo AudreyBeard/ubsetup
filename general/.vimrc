@@ -8,8 +8,16 @@ set smartindent
 "colorscheme carbonized-dark
 "colorscheme distinguished
 
-" Highlights overly long lines. Should be subtle so it doesn't distract too much
-" Note that these colors don't match system colors, it seems to look up based on
-"  some table. Since I changed system colors, it changes these
-highlight OverLength ctermbg=black ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+" Highlights overly long lines. Should be subtle so doesn't distract much
+" With XTerm colors:
+"  237 is charcoal, lighter than background
+highlight OverLength ctermbg=237 ctermfg=white guibg=#592929
+match OverLength /\%75v.\+/
+
+" make folds easier to look at
+:hi Folded ctermbg=black ctermfg=104
+
+" Fold methods for different file types
+autocmd BufRead *.cpp :set fdm=syntax
+autocmd BufRead *.c :set fdm=syntax
+autocmd BufRead *.py :set fdm=indent
