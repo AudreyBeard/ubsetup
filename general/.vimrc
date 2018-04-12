@@ -1,8 +1,14 @@
-set tabstop=4
-set expandtab
-set number
-set sw=4
-set smartindent
+set tabstop=4           " Tab is width of four chars
+set expandtab           " Tab becomes spaces
+set number              " Line numbers
+set sw=4                " Python indentation
+set smartindent         " Indents smartly
+set whichwrap=<,>,h,l   " Cursor wraps around
+set showmatch           " highlight matching brackets
+set hlsearch            " hilight search results
+set incsearch           " hilight search results in realtime
+
+
 " Carbonized color scheme
 " For more hints, check https://github.com/nightsense/carbonized
 "colorscheme carbonized-dark
@@ -12,7 +18,7 @@ set smartindent
 " With XTerm colors:
 "  237 is charcoal, lighter than background
 highlight OverLength ctermbg=237 ctermfg=white guibg=#592929
-match OverLength /\%75v.\+/
+match OverLength /\%74v.\+/
 
 " make folds easier to look at
 :hi Folded ctermbg=black ctermfg=104

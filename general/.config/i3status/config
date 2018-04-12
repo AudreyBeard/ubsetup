@@ -10,7 +10,7 @@ general {
         colors = true
         interval = 5
         color_good = "#FFFFFF"
-        color_degraded = "#555555"
+        color_degraded = "#666666"
         color_bad = "#FF0000"
         # Defined in ~/.config/i3/config
         #color_separator = "#555555"
@@ -29,10 +29,10 @@ order += "time"
 order += "tztime local"
 
 volume master {
-    #format = "🔊  %volume"
-    format = "🕪  %volume"
-    #format_muted = "🔈   %volume"
-    format_muted = "🕨  %volume"
+    #format = "🕪  %volume"
+    #format_muted = "🕨  %volume"
+    format = "VOL: %volume"
+    format_muted = "vol: %volume"
     device = "default"
     mixer = "Master"
     mixer_idx = 0
@@ -41,7 +41,7 @@ volume master {
 }
 
 cpu_usage {
-        format = "CPU %usage"
+        format = "CPU: %usage"
         #max_threshold = 85
         #degraded_threshold = 70
 }
@@ -65,13 +65,14 @@ ethernet _first_ {
 
 battery 0 {
         format = "%status %percentage %remaining"
-		status_chr = "(+)"
-        status_bat = "(-)"
-		low_threshold = 25	
+		#status_chr = "(+)"
+        #status_bat = "(-)"
+		low_threshold = 30	
         threshold_type = "time"
         hide_seconds = true
         align = "center"
-        min_width = 150
+        #min_width = 150
+        integer_battery_capacity = true
 }
 
 run_watch DHCP {
@@ -96,7 +97,8 @@ load {
 }
 
 disk "/" {
-        format = "⦾ %avail"
+        #format = "⦾ %avail"
+        format = "Disk: %avail"
         prefix_type = "decimal"
 }
 

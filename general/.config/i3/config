@@ -157,7 +157,6 @@ assign [class="Firefox"] → 2: www
 
 # Middle button over titlebar kills window (on release)
 #bindsym --release button2 kill
-
 # Colors are #rrggbb
 # class                 border  backgr. text    indicator child_border
 client.focused          #000000 #FFFFFF #000000 #000000   #ffffff
@@ -176,16 +175,16 @@ bar {
         tray_output primary
 
         colors {
-            background #000000
+            background #333333
             #background #1d2021a0
             statusline #ffffff
-            separator #333333
+            separator #666666
 
             # Type             Border   Backgr.  Text
                                         #ff99ff
-            focused_workspace  #FFFFFF  #000000  #FFFFFF
-            active_workspace   #000000  #000000  #FFFFFF
-            inactive_workspace #000000  #000000  #FFFFFF
+            focused_workspace  #FFFFFF  #333333  #FFFFFF
+            active_workspace   #333333  #333333  #FFFFFF
+            inactive_workspace #333333  #333333  #FFFFFF
             urgent_workspace   #FFFFFF  #FFFFFF  #000000
         }
 
@@ -242,7 +241,7 @@ gaps outer 0
 smart_gaps on
 
 # Turn off window titlebar with gaps
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 
 # No gaps for single-window containers
 hide_edge_borders smart_no_gaps
