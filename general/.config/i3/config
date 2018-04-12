@@ -17,7 +17,10 @@ set $sup Mod4
 #font pango:monospace 10
 #font pango:Gomme Regular
 #font pango:bitocra13 Regular
-font pango:Ohsnap Regular
+#font pango:Ohsnap Regular
+#font pango:Ohsnap Regular 
+# Terminal font: GohuFont Regular
+font pango:GohuFont Regular
 #font pango:kates Regular
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -160,8 +163,8 @@ assign [class="Firefox"] → 2: www
 # Colors are #rrggbb
 # class                 border  backgr. text    indicator child_border
 client.focused          #000000 #FFFFFF #000000 #000000   #ffffff
-client.focused_inactive #333333 #333333 #FFFFFF #333333   #333333
-client.unfocused        #333333 #333333 #888888 #333333   #333333
+client.focused_inactive #262626 #262626 #FFFFFF #262626   #262626
+client.unfocused        #262626 #262626 #888888 #262626   #262626
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 #client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #000000
@@ -175,16 +178,16 @@ bar {
         tray_output primary
 
         colors {
-            background #333333
+            background #222222
             #background #1d2021a0
             statusline #ffffff
             separator #666666
 
             # Type             Border   Backgr.  Text
                                         #ff99ff
-            focused_workspace  #FFFFFF  #333333  #FFFFFF
-            active_workspace   #333333  #333333  #FFFFFF
-            inactive_workspace #333333  #333333  #FFFFFF
+            focused_workspace  #262626  #262626  #FFFFFF
+            active_workspace   #262626  #262626  #626262
+            inactive_workspace #262626  #262626  #626262
             urgent_workspace   #FFFFFF  #FFFFFF  #000000
         }
 
