@@ -2,7 +2,7 @@
 
 # Runs CUDA check. If it fails, let me know via notification.  
 
-CUDA_TEST_RESULT_FILE=$HOME/tests/cuda-test-result.txt
+CUDA_TEST_RESULT_FILE=$HOME/.log/cuda-test-result.txt
 CUDA_TEST=$HOME/Packages/cuda/NVIDIA_CUDA-9.0_Samples/bin/x86_64/linux/release/deviceQuery
 
 # Location of test | get last line > redirect to .txt
