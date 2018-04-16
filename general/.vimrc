@@ -1,60 +1,66 @@
-set tabstop=4                     " Tab is width of four chars
-set expandtab                     " Tab becomes spaces
-set number                      " Line numbers
-"set nonumber                      " Line numbers
-set sw=4                          " Python indentation
-set smartindent                   " Indents smartly
+"""""""""""""""""""""""""""""""
+"          Behavior           "
+"""""""""""""""""""""""""""""""
+set tabstop=4                       " Tab is width of four chars
+set expandtab                       " Tab becomes spaces
+set number                          " Line numbers
+"set nonumber                        " Line numbers
+set sw=4                            " Python indentation
+set smartindent                     " Indents smartly
+set showmatch                       " highlight matching brackets
+
+" Pressing RETURN toggles search highlighting
+noremap <CR> :set hlsearch! hlsearch?<CR><CR> 
+
+autocmd BufRead *.cpp :set fdm=syntax   " C/C++ folding
+autocmd BufRead *.c :set fdm=syntax     " 
+autocmd BufRead *.py :set fdm=indent    " Python folding
+
+
+"""""""""""""""""""""""""""""""
+"         Appearance          "
+"""""""""""""""""""""""""""""""
+hi linenr       ctermbg=0 ctermfg=8     " Line numbers
+hi Visual       ctermbg=8 ctermfg=11    " Visual selection 
+hi Folded       ctermbg=0 ctermfg=7     " Folds
+hi OverLength   ctermbg=0 ctermfg=8     " Overly long lines 
+match OverLength /\%74v.\+/         "
+
+
+"""""""""""""""""""""""""""""""
+"          Interface          "
+"""""""""""""""""""""""""""""""
 set whichwrap=<,>,h,l             " Cursor wraps around
-set showmatch                     " highlight matching brackets
 set hlsearch                      " hilight search results
 set incsearch                     " hilight search results in realtime
 
-"                 term bg     light grey
-highlight linenr ctermbg=235 ctermfg=241
 
-"--- Status line config
+"""""""""""""""""""""""""""""""
+"         Status Line         "
+"""""""""""""""""""""""""""""""
+
 set laststatus=2                  " Show file name at bottom
 set statusline+=%F                " Also show path in status line
 set statusline+=%=                " right align
-set statusline+=%10((%l,\ %c)%)\  " Line, colum
-set statusline+=\ \-\-\     " Separator
-set statusline+=%P          " Percent
+set statusline+=%10((%l,\ %c)%)   " Line, colum
+set statusline+=\ \-\-\           " Separator
+set statusline+=%P                " Percent
 
+
+"--- Behavior on insertion
 function! InsertStatuslineColor(mode)
   if a:mode == 'i'
     "               Term bg     Cyan
-    hi statusline ctermfg=235 ctermbg=6
+    hi statusline ctermbg=0 ctermfg=6 cterm=bold
   elseif a:mode == 'r'
-    hi statusline ctermfg=235 ctermbg=0
+    hi statusline ctermbg=0 ctermfg=1 cterm=bold
   else
-    hi statusline ctermfg=235 ctermbg=0
+    hi statusline ctermbg=0 ctermfg=6 cterm=bold
   endif
 endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
-"                                 Yellow    Term bg
-au InsertLeave * hi statusline ctermfg=235 ctermbg=241
+au InsertLeave * hi statusline ctermbg=0 ctermfg=8 cterm=bold
 
-" Default           Line          Text      
-"                   Term bg      light grey    
-highlight statusline ctermfg=235 ctermbg=241
-"---
+highlight statusline ctermbg=0 ctermfg=8 cterm=bold
 
-" Carbonized color scheme
-" For more hints, check https://github.com/nightsense/carbonized
-"colorscheme carbonized-dark
-"colorscheme distinguished
-
-" Highlights overly long lines. Should be subtle so doesn't distract much
-" With XTerm colors:
-"  237 is charcoal, lighter than background
-highlight OverLength ctermbg=235 ctermfg=241 
-match OverLength /\%74v.\+/
-
-" make folds easier to look at
-:hi Folded ctermbg=black ctermfg=104
-
-" Fold methods for different file types
-autocmd BufRead *.cpp :set fdm=syntax
-autocmd BufRead *.c :set fdm=syntax
-autocmd BufRead *.py :set fdm=indent

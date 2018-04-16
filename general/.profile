@@ -31,3 +31,12 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Set inverted (natural) scrolling
 xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Scrolling Distance" -75, 75
+xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Palm Detection" 1
+#This doesn't work
+#redshift
+
+# Background
+~/.fehbg &
+
+# Copy/paste tool
+autocutsel &

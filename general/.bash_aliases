@@ -18,3 +18,13 @@ alias algo-hw='evince ~/Documents/Books/Algorithm\ Design\ by\ Jon\ Kleinberg\,\
 #alias nautilus='nautilus --no-desktop'
 
 alias wifi='nmcli c up'
+
+alias hnsw-dir='cs /home/joshbeard/GitHub/nmslib/similarity_search/src/method'
+alias algo-dir='cs /home/joshbeard/Dropbox/algo_cs-6210'
+alias opsys-dir='cs /home/joshbeard/Dropbox/opsys_cs-6140'
+
+alias zap24='nmcli c up Zap\ LANnigan\ \(2.4\ GHz\)'
+alias zap5='nmcli c up Zap\ LANnigan\ \(5\ GHz\)'
+
+# Run to get class of program (must click on it)
+alias get-class='xprop | grep WM_CLASS'

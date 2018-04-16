@@ -12,18 +12,32 @@
 set $mod Mod1
 set $sup Mod4
 
+# --- Color Variables
 set $primary       #CF6F00
 set $secondary     #00B0CF
 set $tertiary      #8DCF00
 set $quaternary    #FF00FF
 #set $secondary     #00FFFF
 #set $tertiary      #A6E700
-set $dark_neutral  #262626
-set $mid_neutral #626262
+#set $dark_neutral  #262626
+set $dark_neutral  #261F17
+#set $mid_neutral   #463D33
+set $mid_neutral   #665f57
 set $light_neutral #AEA79F
-set $warm_white    #FFFFDAA
+set $warm_white    #FFFFDA
 
+set $ws1  "1: mail"
+set $ws2  "2: www"
+set $ws3  "3"
+set $ws4  "4: media"
+set $ws5  "5"
+set $ws6  "6: game"
+set $ws7  "7"
+set $ws8  "8"
+set $ws9  "9: work"
+set $ws10 "10"
 
+# --- Font
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 10
@@ -50,7 +64,8 @@ font pango:GohuFont Regular
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -113,35 +128,39 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1: mail
-bindsym $mod+2 workspace 2: www
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6: game
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9: work
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1: mail
-bindsym $mod+Shift+2 move container to workspace 2: www
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6: game
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9: work
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Move workspace between displays
+bindsym $mod+Shift+$sup+l move workspace to output right
+bindsym $mod+Shift+$sup+h move workspace to output left
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 
 #--  Custom Commands --#
@@ -166,22 +185,29 @@ bindsym $mod+r mode "resize"
 
 
 #-- Configuration --#
-assign [class="Steam"] → 6: game
-workspace "6: game" output HDMI-1-2
-assign [class="Firefox"] → 2: www
-assign [class="Thunderbird"] → 1: mail
+
+# Programs to workspaces
+assign [class="Thunderbird"]   → $ws1
+assign [class="Firefox"]       → $ws2
+assign [class="Google-chrome"] → $ws4
+assign [class="Steam"]         → $ws6
+
+# Workspaces to displays
+workspace $ws4 output HDMI-1-2
+workspace $ws6 output HDMI-1-2
 
 # Middle button over titlebar kills window (on release)
 #bindsym --release button2 kill
+
 # Colors are #rrggbb 
 # My orange    : CF6F00
 # Ubuntu Orange: E95420
 # colors
-# class                 border        bg             text           indicator child_border
-client.focused          $primary $primary       $dark_neutral  $primary        $primary
-client.focused_inactive $light_neutral $light_neutral $dark_neutral  $dark_neutral   $light_neutral
-client.unfocused        $dark_neutral $dark_neutral $mid_neutral  $dark_neutral   $dark_neutral
-client.urgent           $secondary    $dark_neutral  $dark_neutral  $dark_neutral   $secondary
+# class                 border         bg             text           indicator       child_border
+client.focused          $primary       $primary       $dark_neutral  $primary        $primary
+client.focused_inactive $light_neutral $light_neutral $dark_neutral  $light_neutral   $light_neutral
+client.unfocused        $dark_neutral  $dark_neutral  $mid_neutral   $dark_neutral   $dark_neutral
+client.urgent           $secondary     $dark_neutral  $dark_neutral  $dark_neutral   $secondary
 #client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       $dark_neutral
 
@@ -194,10 +220,10 @@ bar {
         tray_output primary
 
         colors {
-            background #262626
+            background $dark_neutral
             #background #1d2021a0
             statusline $tertiary
-            separator $light_neutral
+            separator $mid_neutral
 
             # Type             Border   Backgr.  Text
                                         #ff99ff
@@ -255,10 +281,10 @@ mode "resize" {
 
 #-- A E S T H E T I C --#
 # Gaps 
-gaps inner 6
+gaps inner 10
 gaps outer 1
-#smart_gaps on
-#smart_borders on
+smart_gaps on
+smart_borders on
 
 # Turn off window titlebar with gaps
 for_window [class="^.*"] border pixel 3

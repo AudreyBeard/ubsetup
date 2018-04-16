@@ -131,9 +131,11 @@ function gitclone-ssh () {
 }
 
 PI_IPADDR=192.168.42.1
+OPSYS_HW="/home/joshbeard/Dropbox/opsys_cs-6140/hw3/os-hw3.pdf"
 
 echo "Here is your todo list via task"
 task next
 
-# Set inverted (natural) scrolling
-xinput set-prop "ETPS/2 Elantech Touchpad" "Synaptics Scrolling Distance" -75, 75
+
+# Carbonized color scheme
+#[ -n "$PS1" ] && sh ~/.nightshell/office-dark

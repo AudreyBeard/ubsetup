@@ -11,7 +11,7 @@ general {
         interval = 5
         #color_good = "#FFFFFF"
         color_good = "#8DCF00"
-        color_degraded = "#AEA79F"
+        color_degraded = "#665F57"
         #color_degraded = "#CF6F00"
         color_bad = "#FF00FF"
         # Defined in ~/.config/i3/config
