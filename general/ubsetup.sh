@@ -37,6 +37,26 @@ sudo apt-get install i3lock
 sudo apt-get install i3status
 sudo apt-get install suckless-tools
 
+# Install productivity tools for LaTeX files
+sudo apt-get install rubber
+sudo apt-get install mudpf
+
+# Install URxvt
+sudo apt-get install rxvt-unicode
+
+# Copy files into etc folder
+mkdir -p ~/etc/
+cp ./etc/i3 ~/etc/i3
+cp ./etc/i3status ~/etc/i3status
+cp ./etc/Xresources ~/etc/Xresources
+cp ./etc/vimrc ~/.vimrc
+
+# Make links (where apps expect them) to config files
+ln -s ~/etc/Xresources ~/.Xresources
+ln -s ~/etc/i3 ~/.config/i3/config
+ln -s ~/etc/i3status ~/.config/i3status/config
+ln -s ~/etc/vimrc ~/.vimrc
+
 # Make sure Nautilus doesn't launch gnome desktop to play nice with i3
 gsettings set org.gnome.desktop.background show-desktop-icons false
 

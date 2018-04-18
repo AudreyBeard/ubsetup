@@ -9,9 +9,6 @@ set sw=4                            " Python indentation
 set smartindent                     " Indents smartly
 set showmatch                       " highlight matching brackets
 
-" Pressing RETURN toggles search highlighting
-noremap <CR> :set hlsearch! hlsearch?<CR><CR> 
-
 autocmd BufRead *.cpp :set fdm=syntax   " C/C++ folding
 autocmd BufRead *.c :set fdm=syntax     " 
 autocmd BufRead *.py :set fdm=indent    " Python folding
@@ -20,19 +17,34 @@ autocmd BufRead *.py :set fdm=indent    " Python folding
 """""""""""""""""""""""""""""""
 "         Appearance          "
 """""""""""""""""""""""""""""""
-hi linenr       ctermbg=0 ctermfg=8     " Line numbers
+hi linenr       ctermbg=none ctermfg=7     " Line numbers
 hi Visual       ctermbg=8 ctermfg=11    " Visual selection 
-hi Folded       ctermbg=0 ctermfg=7     " Folds
+hi Folded       ctermbg=none ctermfg=15     " Folds
 hi OverLength   ctermbg=0 ctermfg=8     " Overly long lines 
-match OverLength /\%74v.\+/         "
+match OverLength /\%73v.\+/         "
 
 
 """""""""""""""""""""""""""""""
 "          Interface          "
 """""""""""""""""""""""""""""""
-set whichwrap=<,>,h,l             " Cursor wraps around
-set hlsearch                      " hilight search results
-set incsearch                     " hilight search results in realtime
+set whichwrap=<,>,h,l           " Cursor wraps around
+set hlsearch                    " hilight search results
+set incsearch                   " hilight search results in realtime
+set ignorecase                  " Ignore cases when searching
+set smartcase                   " Don't ignore cases when capitalize
+
+" Easy window navigation when using viewports
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Use \c to comile (in place file lives) and \v to view in mupdf
+nnoremap <leader>c :w<CR>:!rubber --inplace --pdf --warn all %<CR>
+nnoremap <leader>v :!mupdf %:r.pdf &<CR><CR>
+
+" Pressing RETURN toggles search highlighting
+noremap <CR> :set hlsearch! hlsearch?<CR><CR> 
 
 
 """""""""""""""""""""""""""""""
@@ -46,21 +58,20 @@ set statusline+=%10((%l,\ %c)%)   " Line, colum
 set statusline+=\ \-\-\           " Separator
 set statusline+=%P                " Percent
 
+highlight statusline ctermbg=none ctermfg=7 cterm=bold
 
-"--- Behavior on insertion
 function! InsertStatuslineColor(mode)
   if a:mode == 'i'
     "               Term bg     Cyan
-    hi statusline ctermbg=0 ctermfg=6 cterm=bold
+    hi statusline ctermbg=none ctermfg=6 cterm=bold
   elseif a:mode == 'r'
-    hi statusline ctermbg=0 ctermfg=1 cterm=bold
+    hi statusline ctermbg=none ctermfg=1 cterm=bold
   else
-    hi statusline ctermbg=0 ctermfg=6 cterm=bold
+    hi statusline ctermbg=none ctermfg=6 cterm=bold
   endif
 endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi statusline ctermbg=0 ctermfg=8 cterm=bold
+au InsertLeave * hi statusline ctermbg=none ctermfg=7 cterm=bold
 
-highlight statusline ctermbg=0 ctermfg=8 cterm=bold
 
