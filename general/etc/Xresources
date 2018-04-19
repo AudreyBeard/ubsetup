@@ -51,6 +51,9 @@
 URxvt.scrollBar: off
 URxvt.font: xft:gohufont:style=Regular
 URxvt.boldfont: xft:gohufont:style=bold
+
+URxvt.transparent:true
+URxvt.shading:25
 !URxvt.font:     -*-gohufont-medium-r-*--14-*-*-*-*-*-iso10646-1
 !URxvt.boldfont: -*-gohufont-bold-r-*--14-*-*-*-*-*-iso10646-1
 !9x15 -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1

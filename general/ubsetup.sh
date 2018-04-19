@@ -18,12 +18,12 @@ echo 'function gitclone-ssh () {' >> ~/.bashrc
 echo '  git clone git@github.com:"$@".git' >> ~/.bashrc
 echo '}' >> ~/.bashrc
 
-echo "alias gitclone='gitclone-https'" >> ~/.bashrc
+echo "alias gitclone='gitclone-https'" >> ~/.bash_aliases
 . ~/.bashrc
 
 
 # Make a .local directory
-mkdir -p .local
+mkdir -p ~/.local
 
 
 # Python stuff
@@ -44,18 +44,23 @@ sudo apt-get install mudpf
 # Install URxvt
 sudo apt-get install rxvt-unicode
 
+# Install task
+sudo apt-get install taskwarrior
+
 # Copy files into etc folder
 mkdir -p ~/etc/
 cp ./etc/i3 ~/etc/i3
 cp ./etc/i3status ~/etc/i3status
 cp ./etc/Xresources ~/etc/Xresources
 cp ./etc/vimrc ~/.vimrc
+cp ./etc/taskrc ~/.taskrc
 
 # Make links (where apps expect them) to config files
 ln -s ~/etc/Xresources ~/.Xresources
 ln -s ~/etc/i3 ~/.config/i3/config
 ln -s ~/etc/i3status ~/.config/i3status/config
 ln -s ~/etc/vimrc ~/.vimrc
+ln -s ~/etc/task ~/.taskrc
 
 # Make sure Nautilus doesn't launch gnome desktop to play nice with i3
 gsettings set org.gnome.desktop.background show-desktop-icons false
