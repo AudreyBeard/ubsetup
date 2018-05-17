@@ -52,11 +52,10 @@ URxvt.scrollBar: off
 URxvt.font: xft:gohufont:style=Regular
 URxvt.boldfont: xft:gohufont:style=bold
 
-URxvt.transparent:true
-URxvt.shading:25
-!URxvt.font:     -*-gohufont-medium-r-*--14-*-*-*-*-*-iso10646-1
-!URxvt.boldfont: -*-gohufont-bold-r-*--14-*-*-*-*-*-iso10646-1
-!9x15 -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
+! This allows shadows to creep into the window :(
+!  Also it seems Compton draws black boxes to override opacity
+!urxvt*depth: 32
+!urxvt*background: rgba:2600/1F00/1700/6666
 
-!gohufont-uni-14.bdf -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
-!gohufont-uni-14b.bdf -gohu-gohufont-bold-r-normal--14-100-100-100-c-80-iso10646-1
+URxvt.transparent:true
+URxvt.shading:10
