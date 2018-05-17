@@ -8,11 +8,18 @@ set number                          " Line numbers
 set sw=4                            " Python indentation
 set smartindent                     " Indents smartly
 set showmatch                       " highlight matching brackets
+set showcmd                         " Display # characters/lines in visual selection
 
 autocmd BufRead *.cpp :set fdm=syntax   " C/C++ folding
 autocmd BufRead *.c :set fdm=syntax     " 
 autocmd BufRead *.py :set fdm=indent    " Python folding
+autocmd BufRead *.md  :set tw=72         " Auto-wrap text for Markdown,
+autocmd BufRead *.tex :set tw=72        "  LaTex, and
+autocmd BufRead *.txt :set tw=72        "  Text files
 
+" Highlight overly long lines 
+hi OverLength   ctermbg=0 ctermfg=15
+match OverLength /\%73v.\+/
 
 """""""""""""""""""""""""""""""
 "         Appearance          "
@@ -20,8 +27,6 @@ autocmd BufRead *.py :set fdm=indent    " Python folding
 hi linenr       ctermbg=none ctermfg=7     " Line numbers
 hi Visual       ctermbg=8 ctermfg=11    " Visual selection 
 hi Folded       ctermbg=none ctermfg=15     " Folds
-hi OverLength   ctermbg=0 ctermfg=8     " Overly long lines 
-match OverLength /\%73v.\+/         "
 
 
 """""""""""""""""""""""""""""""
@@ -44,8 +49,13 @@ nnoremap <leader>c :w<CR>:!rubber --inplace --pdf --warn all %<CR>
 nnoremap <leader>v :!mupdf %:r.pdf &<CR><CR>
 "nnoremap <leader>v :!mupdf -C FFFFDA %:r.pdf &<CR><CR>
 
-" Pressing RETURN toggles search highlighting
-noremap <CR> :set hlsearch! hlsearch?<CR><CR> 
+" Pressing \s toggles search highlighting
+nnoremap <leader>s :set hlsearch! hlsearch?<CR>
+
+" pressing CTRL-o or CTRL-SHIFT-o in regular mode adds newline
+nnoremap <CR> myo<Esc>`y
+"nnoremap <leader>j myo<Esc>`y
+"nnoremap <leader>k myO<Esc>`y
 
 
 """""""""""""""""""""""""""""""

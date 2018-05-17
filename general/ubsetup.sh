@@ -47,6 +47,9 @@ sudo apt-get install rxvt-unicode
 # Install task
 sudo apt-get install taskwarrior
 
+sudo apt-get install feh
+sudo apt-get install autocutsel
+
 # Copy files into etc folder
 mkdir -p ~/etc/
 cp ./etc/i3 ~/etc/i3
@@ -57,10 +60,12 @@ cp ./etc/taskrc ~/.taskrc
 
 # Make links (where apps expect them) to config files
 ln -s ~/etc/Xresources ~/.Xresources
+mkdir -p ~/.config/i3
 ln -s ~/etc/i3 ~/.config/i3/config
+mkdir -p ~/.config/i3status
 ln -s ~/etc/i3status ~/.config/i3status/config
 ln -s ~/etc/vimrc ~/.vimrc
-ln -s ~/etc/task ~/.taskrc
+ln -s ~/etc/taskrc ~/.taskrc
 
 # Make sure Nautilus doesn't launch gnome desktop to play nice with i3
 gsettings set org.gnome.desktop.background show-desktop-icons false
