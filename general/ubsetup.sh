@@ -31,24 +31,30 @@ mkdir -p ~/.local
 sudo apt-get install -y python3-pip
 
 # install i3 and associated stuff
-sudo apt-get install i3-wm
-sudo apt-get install dunst
-sudo apt-get install i3lock
-sudo apt-get install i3status
-sudo apt-get install suckless-tools
+sudo apt-get install i3-wm dunst i3lock i3status suckless-tools -y
 
 # Install productivity tools for LaTeX files
-sudo apt-get install rubber
-sudo apt-get install mudpf
+sudo apt-get install rubber mupdf -y
 
 # Install URxvt
-sudo apt-get install rxvt-unicode
+sudo apt-get install rxvt-unicode -y
 
 # Install task
-sudo apt-get install taskwarrior
+sudo apt-get install taskwarrior -y
 
-sudo apt-get install feh
-sudo apt-get install autocutsel
+# Useful system stuff
+sudo apt-get install feh -y         # Background
+sudo apt-get install autocutsel -y  # Copy/Paste
+sudo apt-get install scrot -y       # screenshot
+
+# Font stuff
+git clone https://github.com/Tecate/bitmap-fonts.git
+mkdir -p ~/.bakfiles/etc/fonts/conf.d
+sudo mv /etc/fonts/conf.d/10* ~/.bakfiles/etc/fonts/conf.d
+sudo mv /etc/fonts/conf.d/70-no-bitmaps.conf ~/.bakfiles/etc/fonts/conf.d
+sudo ln -s /etc/fonts/conf.avail/70-yes-bitmaps.conf /etc/fonts/conf.d
+sudo dpkg-reconfigure fontconfig
+
 
 # Copy files into etc folder
 mkdir -p ~/etc/
