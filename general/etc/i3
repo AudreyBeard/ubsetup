@@ -201,10 +201,10 @@ bindsym $mod+r mode "resize"
 assign [class="Thunderbird"]   → $ws1
 assign [class="Firefox" window_role="^(?!GtkFileChooserDialog)(?!confirmEx)"] → $ws2
 #assign [class="Firefox" ] → $ws2
-assign [class="Google-chrome"] → $ws4
+assign [class="Google-chrome" window_role="^(?!GtkFileChooserDialog)"] → $ws4
 assign [class="Steam"]         → $ws6
 assign [class="bioshock.i386"] → $ws6
-assign [class="Chromium-browser"] → $ws6
+assign [class="Chromium-browser" window_role="^(?!GtkFileChooserDialog)"] → $ws6
 
 # Workspaces to displays
 workspace $ws4 output HDMI-1-2
