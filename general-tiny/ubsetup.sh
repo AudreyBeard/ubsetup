@@ -79,9 +79,6 @@ ln -s ~/etc/taskrc ~/.taskrc
 # Make sure Nautilus doesn't launch gnome desktop to play nice with i3
 gsettings set org.gnome.desktop.background show-desktop-icons false
 
-# Use python3 as default in virtual environments
-export $VIRTUALENV_PYTHON=/usr/bin/python3
-
 	
 # Additional packages
 # Tell me what to do

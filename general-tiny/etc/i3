@@ -31,27 +31,17 @@ set $warm_white    #FFFFDA
 set $ws1  "1: mail"
 set $ws2  "2: www"
 set $ws3  "3"
-set $ws4  "4: media"
+set $ws4  "4: notes"
 set $ws5  "5"
-set $ws6  "6: game"
+set $ws6  "6"
 set $ws7  "7"
 set $ws8  "8"
 set $ws9  "9: work"
 set $ws10 "10"
 
-# -- aesthetic variables
-set $gap_inner      10
-set $gap_outer      1
-set $border_width   0 
-
-#exec compton -bfcC -r 6 -l -8 -t -8 -m 1.0 -i .7 --no-fading-openclose --shadow-exclude !focused
-#exec compton -bfcC -r 6 -l -8 -t -8 -m 1.0 -i .7 --no-fading-openclose --inactive-dim 0.3 --shadow-exclude !focused --focus-exclude "x = 0 && y = 0 && override_redirect = true"
-
-exec compton --config ~/.config/compton.conf
-
 # --- Font
 # Font for window titles, etc.
-font pango:GohuFont Regular
+font pango:bitbuntu Regular
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -228,7 +218,6 @@ client.background       $dark_neutral
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        i3bar_command i3bar -t
         status_command i3status
         position top
         tray_output primary
@@ -298,11 +287,6 @@ mode "resize" {
 
 
 #-- A E S T H E T I C --#
-# Gaps 
-gaps inner $gap_inner
-gaps outer $gap_outer
-smart_gaps on
-smart_borders on
 
 # Turn off window titlebar with gaps
 for_window [class="^.*"] border pixel $border_width
