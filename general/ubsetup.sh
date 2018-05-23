@@ -33,8 +33,9 @@ sudo apt-get install -y python3-pip
 # install i3 and associated stuff
 sudo apt-get install i3-wm dunst i3lock i3status suckless-tools -y
 
-# Install productivity tools for LaTeX files
+# Install productivity tools for LaTeX and MarkDown
 sudo apt-get install rubber mupdf -y
+pip install grip
 
 # Install URxvt
 sudo apt-get install rxvt-unicode -y
