@@ -1,0 +1,61 @@
+!xterm.termName: xterm-256color
+
+
+!```````````````````````````!
+!           Colors          ! 
+!,,,,,,,,,,,,,,,,,,,,,,,,,,,!
+
+! Special
+*.background: #261F17
+*.foreground: #FFFFDA
+*.cursorColor: #CF6F00
+
+! black
+*.color0:       #261F17
+*.color8:       #463D33
+
+! red
+*.color1:       #a54242
+*.color9:       #cc6666
+
+! green
+*.color2:       #8DCF00
+*.color10:      #b5bd68
+
+! yellow
+*.color3:       #de935f
+!*.color3:       #CF6F00 ! My orange
+*.color11:      #f0c674
+
+! blue
+*.color4:       #5f819d
+*.color12:      #81a2be
+
+! magenta
+*.color5:       #85678f
+*.color13:      #b294bb
+
+! cyan
+*.color6:       #00B0CF
+*.color14:      #8abeb7
+
+! white
+*.color7:       #665F57
+*.color15:      #AEA79F
+
+
+!```````````````````````````!
+!           Colors          ! 
+!,,,,,,,,,,,,,,,,,,,,,,,,,,,!
+
+URxvt.scrollBar: off
+URxvt.font: xft:gohufont:style=Regular
+URxvt.boldfont: xft:gohufont:style=bold
+
+! This allows shadows to creep into the window :(
+!  Also it seems Compton draws black boxes to override opacity
+!urxvt*depth: 32
+!urxvt*background: rgba:2600/1F00/1700/6666
+
+URxvt.transparent:true
+URxvt.shading:10
