@@ -57,6 +57,12 @@ nnoremap <CR> myo<Esc>`y
 "nnoremap <leader>j myo<Esc>`y
 "nnoremap <leader>k myO<Esc>`y
 
+" Don't unindent on # 
+inoremap # X# 
+
+" A proxy for inter-window copy/pasting
+vmap <leader>y :w! /tmp/vimtmp<CR>
+nmap <leader> :r! cat /tmp/vimtmp<CR>
 
 """""""""""""""""""""""""""""""
 "         Status Line         "
