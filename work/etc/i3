@@ -322,4 +322,9 @@ hide_edge_borders none
 
 #-- Startup Programs --#
 exec firefox
-exec --no-startup-id urxvt
+exec --no-startup-id i3-msg 'workspace $ws1' exec urxvt
+
+# Monitor control
+bindsym Control+$sup+2 exec xrandr --output HDMI-1-1 --mode 1920x1200 --pos 1920x0 --rotate left
+bindsym Control+$sup+1 exec xrandr --output HDMI-1-1 --off
+
