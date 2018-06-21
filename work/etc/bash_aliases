@@ -1,0 +1,9 @@
+alias gitclone='gitclone-https'
+#alias python='python3'
+alias tmux-attach='tmux attach-session -t'
+alias tmux-new='tmux new-session -s'
+alias olcd='workon olcd; cs ~/code/overhead-detection/olcd/eval'
+alias dotprob='workon dot; cs ~/code/dotprob'
+alias pdb='python -m pdb'
+alias nautilus='nautilus --no-desktop'
+

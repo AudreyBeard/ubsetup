@@ -44,19 +44,15 @@ sudo apt-get install rxvt-unicode -y
 sudo apt-get install taskwarrior -y
 
 # Useful system stuff
-sudo apt-get install feh -y         # Background
 sudo apt-get install autocutsel -y  # Copy/Paste
 sudo apt-get install scrot -y       # screenshot
 
 # Font stuff
-cd ~/code; git clone https://github.com/Tecate/bitmap-fonts.git
-cd ubsetup/general
+git clone https://github.com/Tecate/bitmap-fonts.git
 mkdir -p ~/.bakfiles/etc/fonts/conf.d
 sudo mv /etc/fonts/conf.d/10* ~/.bakfiles/etc/fonts/conf.d
 sudo mv /etc/fonts/conf.d/70-no-bitmaps.conf ~/.bakfiles/etc/fonts/conf.d
 sudo ln -s /etc/fonts/conf.avail/70-yes-bitmaps.conf /etc/fonts/conf.d
-xset fp+ /usr/share/fonts/bitmap/bitocra
-xset fp+ /usr/share/fonts/bitmap/gohufont
 sudo dpkg-reconfigure fontconfig
 
 
@@ -80,11 +76,13 @@ ln -s ~/etc/taskrc ~/.taskrc
 # Make sure Nautilus doesn't launch gnome desktop to play nice with i3
 gsettings set org.gnome.desktop.background show-desktop-icons false
 
+# Use python3 as default in virtual environments
+export $VIRTUALENV_PYTHON=/usr/bin/python3
+
 	
 # Additional packages
 # Tell me what to do
 echo '---------------------- ALL DONE -----------------------'
-echo 'Go download f.lux or redshift, then make it autostart with .profile'
 
 # Get autoconf & automake
 #sudo apt-get install autoconf
