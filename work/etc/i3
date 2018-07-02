@@ -23,7 +23,8 @@ set $quaternary    #FF00FF
 #set $tertiary      #A6E700
 #set $dark_neutral  #262626
 set $dark_neutral  #261F17
-set $dark_neutral_trans #00000090
+# set $dark_neutral_trans #00000090
+set $dark_neutral_trans #261F17
 #set $mid_neutral   #463D33
 set $mid_neutral   #665f57
 set $light_neutral #AEA79F
@@ -321,8 +322,8 @@ hide_edge_borders none
 
 
 #-- Startup Programs --#
-exec firefox
-exec --no-startup-id i3-msg 'workspace $ws1' exec urxvt
+exec --no-startup-id i3-msg 'workspace $ws9; exec urxvt; move workspace to output right' 
+exec --no-startup-id i3-msg 'workspace $ws2; exec firefox'
 
 # Monitor control
 bindsym Control+$sup+2 exec xrandr --output HDMI-1-1 --mode 1920x1200 --pos 1920x0 --rotate left
