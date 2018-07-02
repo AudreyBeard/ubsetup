@@ -22,7 +22,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 
-" SCRIPTING VIM IN PYTHON 
+" Scripting Vim in Python 
 
 python3 << EOF
 import vim
@@ -54,13 +54,6 @@ EOF
 "          Functions          "
 """""""""""""""""""""""""""""""
 
-" Max width - wraps and column
-function! SetMaxWidth(len)
-  autocmd BufRead *.md  :set tw=a:len        " Auto-wrap text for Markdown,
-  autocmd BufRead *.tex :set tw=a:len        "  LaTex, and
-  autocmd BufRead *.txt :set tw=a:len        "  Text files
-endfunction
-
 " Normal StatusLine color
 function! NormalStatusLineColor()
   " status line for ACTIVE view
@@ -91,13 +84,16 @@ set smartindent                     " Indents smartly
 set showmatch                       " highlight matching brackets
 set showcmd                         " Display # characters/lines in visual selection
 
+" Folding
 autocmd BufRead *.cpp :set fdm=syntax   " C/C++ folding
 autocmd BufRead *.c :set fdm=syntax     " 
 autocmd BufRead *.py :set fdm=indent    " Python folding
 
-" Maximum text width coercion (for certain files)
-"  plus marker column 
-call SetMaxWidth(79)
+" Maximum text width coercion (for certain files) plus marker column 
+autocmd BufRead *.md  :set tw=79        " Auto-wrap text for Markdown,
+autocmd BufRead *.tex :set tw=79        "  LaTex, and
+autocmd BufRead *.txt :set tw=79        "  Text files
+autocmd BufRead *.wiki :set tw=79       "  vimwiki files
 set colorcolumn=80
 
 "hi OverLength   ctermbg=0 ctermfg=15

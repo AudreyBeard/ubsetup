@@ -56,6 +56,8 @@ sudo mv /etc/fonts/conf.d/70-no-bitmaps.conf ~/.bakfiles/etc/fonts/conf.d
 sudo ln -s /etc/fonts/conf.avail/70-yes-bitmaps.conf /etc/fonts/conf.d
 sudo dpkg-reconfigure fontconfig
 
+# Vim things
+
 
 # Copy files into etc folder
 mkdir -p ~/etc/
