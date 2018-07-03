@@ -59,6 +59,8 @@ xset fp+ /usr/share/fonts/bitmap/bitocra
 xset fp+ /usr/share/fonts/bitmap/gohufont
 sudo dpkg-reconfigure fontconfig
 
+# Vim things
+
 
 # Copy files into etc folder
 mkdir -p ~/etc/
