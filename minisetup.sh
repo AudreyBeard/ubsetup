@@ -33,9 +33,8 @@ sudo apt-get install -y python3-pip
 # install i3 and associated stuff
 sudo apt-get install i3-wm dunst i3lock i3status suckless-tools -y
 
-# Install productivity tools for LaTeX and MarkDown
+# Install productivity tools for LaTeX files
 sudo apt-get install rubber mupdf -y
-pip install grip
 
 # Install URxvt
 sudo apt-get install rxvt-unicode -y
@@ -47,16 +46,19 @@ sudo apt-get install taskwarrior -y
 sudo apt-get install feh -y         # Background
 sudo apt-get install autocutsel -y  # Copy/Paste
 sudo apt-get install scrot -y       # screenshot
+sudo apt-get install compton -y     # compton
+
 
 # Font stuff
-git clone https://github.com/Tecate/bitmap-fonts.git
+cd ~/code; git clone https://github.com/Tecate/bitmap-fonts.git
+cd ubsetup/general
 mkdir -p ~/.bakfiles/etc/fonts/conf.d
 sudo mv /etc/fonts/conf.d/10* ~/.bakfiles/etc/fonts/conf.d
 sudo mv /etc/fonts/conf.d/70-no-bitmaps.conf ~/.bakfiles/etc/fonts/conf.d
 sudo ln -s /etc/fonts/conf.avail/70-yes-bitmaps.conf /etc/fonts/conf.d
+xset fp+ /usr/share/fonts/bitmap/bitocra
+xset fp+ /usr/share/fonts/bitmap/gohufont
 sudo dpkg-reconfigure fontconfig
-
-# Vim things
 
 
 # Copy files into etc folder
