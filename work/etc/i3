@@ -205,7 +205,7 @@ bindsym $mod+r mode "resize"
 
 # Programs to workspaces
 assign [class="Thunderbird"]   → $ws1
-assign [class="Firefox" window_role="^(?!GtkFileChooserDialog)(?!confirmEx)"] → $ws2
+assign [class="Firefox^(Navigator)" window_role="^(?!GtkFileChooserDialog)(?!confirmEx)"] → $ws2
 #assign [class="Firefox" window_role="^(?!GtkFileChooserDialog)" window_role="^(?!confirmEx)"] → $ws2
 #assign [class="Firefox" ] → $ws2
 assign [class="Google-chrome" window_role="^(?!GtkFileChooserDialog)"] → $ws4
