@@ -23,6 +23,8 @@ echo '}' >> ~/.bashrc
 # Make a .local directory
 mkdir -p ~/.local
 
+# Magic Wormhole for transfering files easily
+sudo apt-get install magic-wormhole -y
 
 # Python stuff
 # Install pip
