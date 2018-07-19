@@ -149,6 +149,9 @@ inoremap # X#
 vmap <leader>y :w! /tmp/vimtmp<CR>
 nmap <leader>p :r! cat /tmp/vimtmp<CR>
 
+" Mouse scrollwheel
+set mouse=a
+
 
 """""""""""""""""""""""""""""""
 "         Status Line         "

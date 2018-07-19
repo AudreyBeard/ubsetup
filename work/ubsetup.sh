@@ -120,6 +120,7 @@ ln -s $CFG_FILE_DIR/vimrc ~/.vimrc
 ln -s $CFG_FILE_DIR/taskrc ~/.taskrc
 ln -s $CFG_FILE_DIR/taskrc ~/.taskrc
 ln -s $CFG_FILE_DIR/tmux ~/.tmux.conf
+ln -s $CFG_FILE_DIR/bash_aliases ~/.bash_aliases
 
 
 
