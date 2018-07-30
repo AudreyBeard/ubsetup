@@ -135,10 +135,6 @@ nnoremap <leader>s :set hlsearch! hlsearch?<CR>
 " Insert newline without _noticeably_ exiting normal mode
 nnoremap <CR> myo<Esc>`yj
 
-" Open directory containing file in vertical viewport of width 25
-nnoremap <leader>d :Vex<CR> :vertical resize 25 <CR>
-
-
 "nnoremap <leader>j myo<Esc>`y
 "nnoremap <leader>k myO<Esc>`y
 
@@ -149,12 +145,7 @@ inoremap # X#
 vmap <leader>y :w! /tmp/vimtmp<CR>
 nmap <leader>p :r! cat /tmp/vimtmp<CR>
 
-" Hacky sidebar ( TODO use nerdtree )
 nnoremap <leader>d :Vex<CR> :vertical resize 25
-
-" Mouse scrollwheel
-set mouse=a
-
 
 """""""""""""""""""""""""""""""
 "         Status Line         "

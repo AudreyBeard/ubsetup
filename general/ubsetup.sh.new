@@ -1,4 +1,5 @@
 ### script for setting up useful preferences in ubuntu on my personal machine
+HERE=$PWD
 
 # cs <dir>: combines cd <dir> and ls for simple navigation
 echo '# CS: combines cd and ls in one easy command' >> ~/.bashrc
@@ -18,23 +19,22 @@ echo 'function gitclone-ssh () {' >> ~/.bashrc
 echo '  git clone git@github.com:"$@".git' >> ~/.bashrc
 echo '}' >> ~/.bashrc
 
-echo "alias gitclone='gitclone-https'" >> ~/.bash_aliases
-. ~/.bashrc
-
 
 # Make a .local directory
 mkdir -p ~/.local
 
+# Magic Wormhole for transfering files easily
+sudo apt-get install magic-wormhole -y
 
-# Python stuff
 # Install pip
 sudo apt-get install -y python3-pip
 
 # install i3 and associated stuff
 sudo apt-get install i3-wm dunst i3lock i3status suckless-tools -y
 
-# Install productivity tools for LaTeX files
-sudo apt-get install rubber mupdf -y
+# Install productivity tools for LaTeX files and MarkDown
+sudo apt-get install rubber mudpf -y
+#sudo apt-get install grip
 
 # Install URxvt
 sudo apt-get install rxvt-unicode -y
@@ -43,38 +43,46 @@ sudo apt-get install rxvt-unicode -y
 sudo apt-get install taskwarrior -y
 
 # Useful system stuff
-sudo apt-get install feh -y         # Background
+sudo apt-get install feh -y         # Background images
 sudo apt-get install autocutsel -y  # Copy/Paste
-sudo apt-get install scrot -y       # screenshot
-sudo apt-get install compton -y     # compton
+sudo apt-get install scrot -y       # Screenshot
 
+
+# Vim
+# pathogen
+mkdir -p ~/.vim/autoload ~/.vim/bundle
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+# Vim Plugins
+cd ~/.vim/bundle
+pip install flake8                                                  # PEP8 linter
+git clone --depth=1 https://github.com/vim-syntastic/syntastic.git  # 
+git clone https://github.com/vimwiki/vimwiki.git                    # Vimwiki!
+cd $HERE
 
 # Font stuff
-cd ~/code; git clone https://github.com/Tecate/bitmap-fonts.git
-cd ubsetup/general
+git clone https://github.com/Tecate/bitmap-fonts.git ~/.local/bitmap-fonts
 mkdir -p ~/.bakfiles/etc/fonts/conf.d
 sudo mv /etc/fonts/conf.d/10* ~/.bakfiles/etc/fonts/conf.d
 sudo mv /etc/fonts/conf.d/70-no-bitmaps.conf ~/.bakfiles/etc/fonts/conf.d
 sudo ln -s /etc/fonts/conf.avail/70-yes-bitmaps.conf /etc/fonts/conf.d
-xset fp+ /usr/share/fonts/bitmap/bitocra
-xset fp+ /usr/share/fonts/bitmap/gohufont
 sudo dpkg-reconfigure fontconfig
-
 
 # Copy files into etc folder
 mkdir -p ~/etc/
-cp ./etc/i3 ~/etc/i3
-cp ./etc/i3status ~/etc/i3status
-cp ./etc/Xresources ~/etc/Xresources
-cp ./etc/vimrc ~/.vimrc
-cp ./etc/taskrc ~/.taskrc
+cp $HERE/etc/* ~/etc/
+#cp ./etc/i3 ~/etc/i3
+#cp ./etc/i3status ~/etc/i3status
+#cp ./etc/Xresources ~/etc/Xresources
+#cp ./etc/vimrc ~/.vimrc
+#cp ./etc/taskrc ~/.taskrc
 
 # Make links (where apps expect them) to config files
-ln -s ~/etc/Xresources ~/.Xresources
 mkdir -p ~/.config/i3
-ln -s ~/etc/i3 ~/.config/i3/config
 mkdir -p ~/.config/i3status
+ln -s ~/etc/i3 ~/.config/i3/config
 ln -s ~/etc/i3status ~/.config/i3status/config
+ln -s ~/etc/Xresources ~/.Xresources
 ln -s ~/etc/vimrc ~/.vimrc
 ln -s ~/etc/taskrc ~/.taskrc
 
