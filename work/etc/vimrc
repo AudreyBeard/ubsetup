@@ -5,13 +5,13 @@ set nocompatible
 filetype plugin on
 syntax on
 
-
 """""""""""""""""""""""""""""""
 "          Syntastic          "
 """""""""""""""""""""""""""""""
 execute pathogen#infect()
 
 let g:syntastic_python_checkers=['flake8']
+set statusline=
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -57,17 +57,17 @@ EOF
 " Normal StatusLine color
 function! NormalStatusLineColor()
   " status line for ACTIVE view
-  highlight statusline ctermbg=10 ctermfg=0 cterm=bold
+  highlight statusline ctermbg=7 ctermfg=none cterm=bold
   " status line for INACTIVE view
-  highlight StatusLineNC ctermbg=8 ctermfg=10 cterm=bold
+  highlight StatusLineNC ctermbg=none ctermfg=0 cterm=bold
 endfunction
 
 " Change statusline color on insert, replace
 function! InsertStatuslineColor(mode)
   if a:mode == 'i'
-    hi statusline ctermbg=none ctermfg=6 cterm=bold
+    hi statusline ctermbg=7 ctermfg=6 cterm=bold
   elseif a:mode == 'r'
-    hi statusline ctermbg=none ctermfg=1 cterm=bold
+    hi statusline ctermbg=7 ctermfg=1 cterm=bold
   endif
 endfunction
 
@@ -79,7 +79,6 @@ set tabstop=4                       " Tab is width of four chars
 set sw=4                            " Python indentation
 set expandtab                       " Tab becomes spaces
 set number                          " Line numbers
-"set nonumber                        " Line numbers
 set smartindent                     " Indents smartly
 set showmatch                       " highlight matching brackets
 set showcmd                         " Display # characters/lines in visual selection
@@ -96,6 +95,7 @@ autocmd BufRead *.txt :set tw=79        "  Text files
 autocmd BufRead *.wiki :set tw=79       "  vimwiki files
 set colorcolumn=80
 
+" More distracting method of overlength warning - highlight all text after certain length
 "hi OverLength   ctermbg=0 ctermfg=15
 "match OverLength /\%79v.\+/
 
@@ -103,10 +103,10 @@ set colorcolumn=80
 """""""""""""""""""""""""""""""
 "     General Apprearance     "
 """""""""""""""""""""""""""""""
-hi linenr      ctermbg=none    ctermfg=7     " Line numbers
-hi Visual      ctermbg=8       ctermfg=11    " Visual selection 
-hi Folded      ctermbg=none    ctermfg=15    " Folds
-hi ColorColumn ctermbg=8
+hi linenr      ctermbg=none    ctermfg=7                    " Line numbers
+hi Visual      ctermbg=8       ctermfg=11                   " Visual selection 
+hi Folded      ctermbg=none    ctermfg=0    cterm=bold      " Folds
+hi ColorColumn ctermbg=7
 
 
 """""""""""""""""""""""""""""""
@@ -145,6 +145,7 @@ inoremap # X#
 vmap <leader>y :w! /tmp/vimtmp<CR>
 nmap <leader>p :r! cat /tmp/vimtmp<CR>
 
+nnoremap <leader>d :Vex<CR> :vertical resize 25
 
 """""""""""""""""""""""""""""""
 "         Status Line         "
