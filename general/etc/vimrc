@@ -100,6 +100,7 @@ set colorcolumn=80
 "match OverLength /\%79v.\+/
 
 
+
 """""""""""""""""""""""""""""""
 "     General Apprearance     "
 """""""""""""""""""""""""""""""
@@ -124,26 +125,29 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Compile (in dir containing file) and view in mupdf
+" Use \c to comile (in place file lives) and \v to view in mupdf
 nnoremap <leader>c :w<CR>:!rubber --inplace --pdf --warn all %<CR>
 nnoremap <leader>v :!mupdf %:r.pdf &<CR><CR>
 "nnoremap <leader>v :!mupdf -C FFFFDA %:r.pdf &<CR><CR>
 
-" Toggle search highlighting
+" Pressing \s toggles search highlighting
 nnoremap <leader>s :set hlsearch! hlsearch?<CR>
 
-" Insert newline without _noticeably_ exiting normal mode
-nnoremap <CR> myo<Esc>`yj
-
-"nnoremap <leader>j myo<Esc>`y
-"nnoremap <leader>k myO<Esc>`y
-
-" Don't unindent on # 
-inoremap # X#
+" pressing CTRL-o or CTRL-SHIFT-o in regular mode adds newline
+"nnoremap <CR> myo<Esc>`y
+nnoremap <leader>j myo<Esc>`y
+nnoremap <leader>k myO<Esc>`y
 
 " A proxy for inter-window copy/pasting
 vmap <leader>y :w! /tmp/vimtmp<CR>
 nmap <leader>p :r! cat /tmp/vimtmp<CR>
+
+" Mouse scrollwheel
+set mouse=a
+
+" Wrap visually selected text with $
+"vmap <leader>4 yb/<C-r>0<CR>i$<Esc>//e<C-r>0<CR>a$<Esc>
+vmap <>4 "mdi$$<Esc>h"mp
 
 
 """""""""""""""""""""""""""""""

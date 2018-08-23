@@ -18,12 +18,9 @@ set $primary       #CF6F00
 set $secondary     #00B0CF
 set $tertiary      #8DCF00
 set $quaternary    #FF00FF
-#set $secondary     #00FFFF
-#set $tertiary      #A6E700
-#set $dark_neutral  #262626
 set $dark_neutral  #261F17
 set $dark_neutral_trans #00000090
-#set $mid_neutral   #463D33
+#set $dark_neutral_trans #261F17
 set $mid_neutral   #665f57
 set $light_neutral #AEA79F
 set $warm_white    #FFFFDA
@@ -43,9 +40,6 @@ set $ws10 "10"
 set $gap_inner      10
 set $gap_outer      1
 set $border_width   0 
-
-#exec compton -bfcC -r 6 -l -8 -t -8 -m 1.0 -i .7 --no-fading-openclose --shadow-exclude !focused
-#exec compton -bfcC -r 6 -l -8 -t -8 -m 1.0 -i .7 --no-fading-openclose --inactive-dim 0.3 --shadow-exclude !focused --focus-exclude "x = 0 && y = 0 && override_redirect = true"
 
 exec compton --config ~/.config/compton.conf
 
@@ -199,12 +193,12 @@ bindsym $mod+r mode "resize"
 
 # Programs to workspaces
 assign [class="Thunderbird"]   → $ws1
-assign [class="Firefox" window_role="^(?!GtkFileChooserDialog)(?!confirmEx)"] → $ws2
+assign [class="Firefox" window_role="^(?!GtkFileChooserDialog)^(?!confirmEx)"] → $ws2
 #assign [class="Firefox" ] → $ws2
-assign [class="Google-chrome" window_role="^(?!GtkFileChooserDialog)"] → $ws4
+assign [class="Google-chrome"] → $ws4
 assign [class="Steam"]         → $ws6
 assign [class="bioshock.i386"] → $ws6
-assign [class="Chromium-browser" window_role="^(?!GtkFileChooserDialog)"] → $ws6
+assign [class="Chromium-browser"] → $ws6
 
 # Workspaces to displays
 workspace $ws4 output HDMI-1-2
@@ -261,12 +255,12 @@ bar {
 # Suspend, lock, etc.
 set $mode_system SYSTEM (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id $HOME/bin/i3exit lock, mode "default"
-    bindsym e exec --no-startup-id $HOME/bin/i3exit logout, mode "default"
-    bindsym s exec --no-startup-id $HOME/bin/i3exit suspend, mode "default"
-    bindsym h exec --no-startup-id $HOME/bin/i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id $HOME/bin/i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id $HOME/bin/i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id $HOME/.scripts/i3exit lock, mode "default"
+    bindsym e exec --no-startup-id $HOME/.scripts/i3exit logout, mode "default"
+    bindsym s exec --no-startup-id $HOME/.scripts/i3exit suspend, mode "default"
+    bindsym h exec --no-startup-id $HOME/.scripts/i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id $HOME/.scripts/i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id $HOME/.scripts/i3exit shutdown, mode "default"
 
     # Back to normal
     bindsym Return mode "default"

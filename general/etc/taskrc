@@ -13,8 +13,6 @@
 # Files
 data.location=~/.task
 
-editor=vim
-
 # Colors
 color.blocking=color0 on color15
 color.blocked=color15 on color0 
