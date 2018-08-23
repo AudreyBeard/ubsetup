@@ -25,7 +25,6 @@ mkdir -p ~/.local
 
 # Install systemwide stuff
 ./install-system.sh
-
 cd $HERE
 
 # Font stuff
@@ -38,9 +37,11 @@ sudo dpkg-reconfigure fontconfig
 
 # Copy and link all config files
 ./copy-config.sh
+cd $HERE
 
 # Vim stuff
 ./setup-vim.sh
+cd $HERE
 
 # Make sure Nautilus doesn't launch gnome desktop to play nice with i3
 gsettings set org.gnome.desktop.background show-desktop-icons false
