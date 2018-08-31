@@ -99,6 +99,13 @@ set colorcolumn=80
 "hi OverLength   ctermbg=0 ctermfg=15
 "match OverLength /\%79v.\+/
 
+" Comment Character TODO later
+"autocmd BufRead *.cpp :let CmtChar=//   " C/C++
+"autocmd BufRead *.c :let CmtChar=//     " 
+"autocmd BufRead *.py :let CmtChar=#     " Python
+"autocmd BufRead *.sh :let CmtChar=#     " Bash
+"autocmd BufRead *.tex :let CmtChar=%    " LaTex
+"autocmd BufRead *.vimrc :let CmtChar="    " LaTex
 
 
 """""""""""""""""""""""""""""""
