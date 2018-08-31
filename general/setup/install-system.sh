@@ -19,6 +19,7 @@ sudo apt-get install rxvt-unicode -y
 # Install task
 sudo apt-get install taskwarrior -y
 
+
 # Useful system stuff - nice for screen locking and copy/pasting
 sudo apt-get install scrot -y       # Screenshot
 sudo apt-get install feh -y         # Background images
