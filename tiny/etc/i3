@@ -293,4 +293,3 @@ for_window [class="^.*"] border pixel $border_width
 
 # No borders for single-window containers
 #hide_edge_borders smart_no_gaps
-

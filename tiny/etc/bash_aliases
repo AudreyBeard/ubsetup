@@ -1,0 +1,15 @@
+alias nautilus='nautilus --no-desktop'
+
+alias wifi='nmcli c up'
+
+alias zap24='nmcli c up Zap\ LANnigan\ \(2.4\ GHz\)'
+alias zap5='nmcli c up Zap\ LANnigan\ \(5\ GHz\)'
+
+# Run to get class of program (must click on it)
+alias get-class='xprop | grep WM_CLASS'
+
+alias another='urxvt &' 
+
+alias tasks='git -C ~/code/task pull; task next'
+alias task-push='git -C ~/code/task commit -am "updates"; git -C ~/code/task push'
+alias task-pull='git -C ~/code/task pull'
