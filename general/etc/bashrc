@@ -133,8 +133,10 @@ function gitclone-ssh () {
 PI_IPADDR=192.168.42.1
 OPSYS_HW="/home/joshbeard/Dropbox/opsys_cs-6140/hw3/os-hw3.pdf"
 
-echo "Attempting to pull task list from GitHub..."
-git -C ~/code/task pull && task next
+#echo "Attempting to pull task list from GitHub..."
+#git -C ~/code/task pull && task next
+echo "Tasks:"
+task next
 
 
 # Carbonized color scheme

@@ -75,6 +75,8 @@ endfunction
 """""""""""""""""""""""""""""""
 "          Behavior           "
 """""""""""""""""""""""""""""""
+let mapleader=";"
+
 set tabstop=4                       " Tab is width of four chars
 set sw=4                            " Python indentation
 set expandtab                       " Tab becomes spaces
@@ -155,6 +157,9 @@ set mouse=a
 " Wrap visually selected text with $
 "vmap <leader>4 yb/<C-r>0<CR>i$<Esc>//e<C-r>0<CR>a$<Esc>
 vmap <>4 "mdi$$<Esc>h"mp
+
+" Wrap line and return to last point
+nmap <leader>g mgJvgq`g
 
 
 """""""""""""""""""""""""""""""

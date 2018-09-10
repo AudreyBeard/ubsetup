@@ -113,8 +113,8 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+b layout tabbed
+bindsym $mod+n layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -123,10 +123,23 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+Shift+p focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
+
+#-- DIRECT WORKSPACE SWITCHING --#
+# switch to workspace
+bindsym $mod+q workspace $ws1
+bindsym $mod+w workspace $ws2
+bindsym $mod+e workspace $ws3
+bindsym $mod+r workspace $ws4
+bindsym $mod+t workspace $ws5
+bindsym $mod+y workspace $ws6
+bindsym $mod+u workspace $ws7
+bindsym $mod+i workspace $ws8
+bindsym $mod+o workspace $ws9
+bindsym $mod+p workspace $ws10
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -185,7 +198,7 @@ bindsym Control+$sup+Down exec "pactl set-sink-volume 0 -5% && pactl set-sink-vo
 bindsym Control+$sup+Left exec "pactl set-sink-mute 0 toggle && pactl set-sink-mute 1 toggle && pactl set-sink-mute 2 toggle"
 # Modeselektor
 bindsym Control+Escape mode "$mode_system"
-bindsym $mod+r mode "resize"
+bindsym $mod+0x20 mode "resize"
 
 
 
