@@ -13,3 +13,7 @@ alias another='urxvt &'
 alias tasks='git -C ~/code/task pull; task next'
 alias task-push='git -C ~/code/task commit -am "updates"; git -C ~/code/task push'
 alias task-pull='git -C ~/code/task pull'
+
+alias gcwip='git commit -am "wip"'
+
+alias vimwiki='vim index.wiki'

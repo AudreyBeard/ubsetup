@@ -41,8 +41,8 @@ volume master {
 
 cpu_usage {
         format = "CPU: %usage"
-        #max_threshold = 85
-        #degraded_threshold = 70
+        max_threshold = 55
+        #degraded_threshold = 50
 }
 
 wireless _first_ {
