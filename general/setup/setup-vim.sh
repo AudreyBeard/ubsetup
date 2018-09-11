@@ -17,5 +17,8 @@ git clone --depth=1 https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle
 # Vimwiki!
 git clone https://github.com/vimwiki/vimwiki.git ~/.vim/bundle/syntastic
 
+# NERDTree
+git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+
 # Go back
 cd $HERE/setup
