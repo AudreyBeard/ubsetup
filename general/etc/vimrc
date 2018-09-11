@@ -5,6 +5,16 @@ set nocompatible
 filetype plugin on
 syntax on
 
+"""""""""""""""""""""""""""""""
+"           Symbols           "
+"""""""""""""""""""""""""""""""
+imap <C-l> ≤
+imap <C-g> ≥
+imap <C-a><C-e> ≅
+imap <C-d><C-l> δ
+imap <C-d><C-u> Δ
+imap <C-r> ρ
+imap <C-e> ε
 
 """""""""""""""""""""""""""""""
 "          Syntastic          "
@@ -12,6 +22,7 @@ syntax on
 execute pathogen#infect()
 
 let g:syntastic_python_checkers=['flake8']
+set statusline=
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -150,6 +161,8 @@ nnoremap <leader>k myO<Esc>`y
 " A proxy for inter-window copy/pasting
 vmap <leader>y :w! /tmp/vimtmp<CR>
 nmap <leader>p :r! cat /tmp/vimtmp<CR>
+
+nnoremap <leader>f :NERDTreeToggle<CR>
 
 " Mouse scrollwheel
 set mouse=a
