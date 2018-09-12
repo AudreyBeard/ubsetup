@@ -1,3 +1,19 @@
+execute pathogen#infect()
+set statusline=
+
+"""""""""""""""""""""""""""""""
+"           Symbols           "
+"""""""""""""""""""""""""""""""
+imap <C-l> ≤
+imap <C-g> ≥
+imap <C-a><C-e> ≅
+imap <C-n><C-e> ≠
+imap <C-d><C-l> δ
+imap <C-d><C-u> Δ
+imap <C-r> ρ
+imap <C-e> ε
+imap <C-i><C-n> ∈
+
 """""""""""""""""""""""""""""""
 "           VimWiki           "
 """""""""""""""""""""""""""""""
@@ -12,12 +28,12 @@ syntax on
 
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 
 " Scripting Vim in Python 
-"
+
 "python3 << EOF
 "import vim
 "flake8_errors = [
@@ -69,6 +85,8 @@ endfunction
 """""""""""""""""""""""""""""""
 "          Behavior           "
 """""""""""""""""""""""""""""""
+let mapleader=";"
+
 set tabstop=4                       " Tab is width of four chars
 set sw=4                            " Python indentation
 set expandtab                       " Tab becomes spaces
@@ -115,6 +133,7 @@ hi ColorColumn ctermbg=8
 """""""""""""""""""""""""""""""
 "          Interface          "
 """""""""""""""""""""""""""""""
+
 set whichwrap=<,>,h,l           " Cursor wraps around
 set hlsearch                    " hilight search results
 set incsearch                   " hilight search results in realtime
@@ -126,6 +145,8 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+map <leader>f :NERDTreeToggle<CR>
 
 " Use \c to comile (in place file lives) and \v to view in mupdf
 nnoremap <leader>c :w<CR>:!rubber --inplace --pdf --warn all %<CR>
@@ -140,6 +161,7 @@ nnoremap <leader>s :set hlsearch! hlsearch?<CR>
 nnoremap <leader>j myo<Esc>`y
 nnoremap <leader>k myO<Esc>`y
 
+" Wrap line and return to last point
 nnoremap <leader>g mgJvgq`g
 
 " A proxy for inter-window copy/pasting
@@ -149,9 +171,10 @@ nmap <leader>p :r! cat /tmp/vimtmp<CR>
 " Mouse scrollwheel
 set mouse=a
 
-" Wrap visually selected text with $
+" Wrap visually selected text with symbols
 "vmap <leader>4 yb/<C-r>0<CR>i$<Esc>//e<C-r>0<CR>a$<Esc>
 vmap <leader>4 "mdi$$<Esc>h"mp
+vmap <leader>8 "mdi**<Esc>h"mp
 
 
 """""""""""""""""""""""""""""""
