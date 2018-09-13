@@ -14,11 +14,22 @@ imap <C-g><C-e> ≥
 imap <C-a><C-e> ≅
 imap <C-n><C-e> ≠
 imap <C-i><C-n> ∈
+imap <C-d><C-a> ≡
+imap <C-e><C-x> ∃
+imap <C-a><C-n> ∧
+imap <C-o><C-r> ∨
+imap <C-x><C-o> ⊕
+imap <C-f><C-a> ∀
+imap <C-s><C-b> ⊆
+
 "Identifiers
 imap <C-d><C-l> δ
 imap <C-d><C-u> Δ
 imap <C-r><C-l> ρ
 imap <C-e><C-l> ε
+imap <C-a><C-l> α
+imap <C-b><C-l> β
+imap <C-l><C-l> λ
 
 """""""""""""""""""""""""""""""
 "          Syntastic          "
@@ -173,7 +184,7 @@ set mouse=a
 
 " Wrap visually selected text with $
 "vmap <leader>4 yb/<C-r>0<CR>i$<Esc>//e<C-r>0<CR>a$<Esc>
-vmap <>4 "mdi$$<Esc>h"mp
+vmap <leader>4 "mdi$$<Esc>h"mp
 vmap <leader>8 "mdi**<Esc>h"mp
 
 " Wrap line and return to last point
