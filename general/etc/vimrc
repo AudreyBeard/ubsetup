@@ -174,9 +174,11 @@ set mouse=a
 " Wrap visually selected text with $
 "vmap <leader>4 yb/<C-r>0<CR>i$<Esc>//e<C-r>0<CR>a$<Esc>
 vmap <>4 "mdi$$<Esc>h"mp
+vmap <leader>8 "mdi**<Esc>h"mp
 
 " Wrap line and return to last point
 nmap <leader>g mgJvgq`g
+vnoremap <leader>g gq`g
 
 
 """""""""""""""""""""""""""""""
