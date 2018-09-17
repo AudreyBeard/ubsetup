@@ -10,14 +10,16 @@ imap <C-l><C-e> ≤
 imap <C-g><C-e> ≥
 imap <C-a><C-e> ≅
 imap <C-n><C-e> ≠
-imap <C-i><C-n> ∈
+imap <C-c><C-b> ∈
 imap <C-d><C-a> ≡
 imap <C-e><C-x> ∃
 imap <C-a><C-n> ∧
 imap <C-o><C-r> ∨
 imap <C-x><C-o> ⊕
 imap <C-f><C-a> ∀
-imap <C-s><C-b> ⊆
+imap <C-s><C-b> ⊂
+imap <C-o><C-u> ∪
+imap <C-o><C-i> ∩
 
 "Identifiers
 imap <C-d><C-l> δ
@@ -27,6 +29,7 @@ imap <C-e><C-l> ε
 imap <C-a><C-l> α
 imap <C-b><C-l> β
 imap <C-l><C-l> λ
+imap <C-b><C-p> •
 
 """""""""""""""""""""""""""""""
 "           VimWiki           "
