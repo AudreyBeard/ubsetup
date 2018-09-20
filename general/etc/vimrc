@@ -35,6 +35,9 @@ imap <C-b><C-l> β
 imap <C-l><C-l> λ
 imap <C-b><C-p> •
 
+" Vimwiki code block
+imap {{{ {{{<Enter><Esc>i     <Esc>mbi<Enter>}}}<Esc><<`ba
+
 """""""""""""""""""""""""""""""
 "          Syntastic          "
 """""""""""""""""""""""""""""""
@@ -127,6 +130,9 @@ autocmd BufRead *.tex :set tw=79        "  LaTex, and
 autocmd BufRead *.txt :set tw=79        "  Text files
 autocmd BufRead *.wiki :set tw=79       "  vimwiki files
 set colorcolumn=80
+
+" Don't unindent on # (Useful for python programming)
+inoremap # X#
 
 "hi OverLength   ctermbg=0 ctermfg=15
 "match OverLength /\%79v.\+/
