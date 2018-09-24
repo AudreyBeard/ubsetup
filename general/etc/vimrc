@@ -134,6 +134,9 @@ set colorcolumn=80
 " Don't unindent on # (Useful for python programming)
 inoremap # X#
 
+" I never want to use a semicolon in normal mode
+nnoremap ; :
+
 "hi OverLength   ctermbg=0 ctermfg=15
 "match OverLength /\%79v.\+/
 
