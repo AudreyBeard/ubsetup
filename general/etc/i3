@@ -82,12 +82,22 @@ bindsym $mod_1+h focus left
 bindsym $mod_1+j focus down
 bindsym $mod_1+k focus up
 bindsym $mod_1+l focus right
+#---
+bindsym $mod_1+Left  focus left
+bindsym $mod_1+Down  focus down
+bindsym $mod_1+Up    focus up
+bindsym $mod_1+Right focus right
 
 # move focused window
 bindsym $mod_1+$mod_2+h move left
 bindsym $mod_1+$mod_2+j move down
 bindsym $mod_1+$mod_2+k move up
 bindsym $mod_1+$mod_2+l move right
+#---
+bindsym $mod_1+$mod_2+Left move left
+bindsym $mod_1+$mod_2+Down move down
+bindsym $mod_1+$mod_2+Up move up
+bindsym $mod_1+$mod_2+Right move right
 
 # Easy workspace switching
 workspace_auto_back_and_forth yes
