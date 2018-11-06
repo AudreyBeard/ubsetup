@@ -104,7 +104,11 @@ function! InsertStatuslineColor(mode)
   endif
 endfunction
 
-
+"function! Dvorak()
+"  let s:dvorak_mode = exists('s:dvorak_mode') ? !s:dvorak_mode : 1
+"  if s:dvorak_mode
+"      nnoremap d h
+"      nnoremap 
 """""""""""""""""""""""""""""""
 "          Behavior           "
 """""""""""""""""""""""""""""""

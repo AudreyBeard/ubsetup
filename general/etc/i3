@@ -222,6 +222,7 @@ bindsym $mod_1+BackSpace mode "resize"
 #-- Configuration --#
 
 # Programs to workspaces
+# assign [class=*] $ws4
 assign [class="Thunderbird"]   → $ws1
 assign [class="Firefox" window_role="^(?!GtkFileChooserDialog)^(?!confirmEx)"] → $ws2
 #assign [class="Firefox" ] → $ws2
@@ -240,7 +241,6 @@ workspace $ws6 output HDMI-1-2
 # Colors are #rrggbb 
 # My orange    : CF6F00
 # Ubuntu Orange: E95420
-# colors
 # class                 border         bg             text           indicator       child_border
 client.focused          $primary       $primary       $dark_neutral  $primary        $primary
 client.focused_inactive $light_neutral $light_neutral $dark_neutral  $light_neutral   $light_neutral
@@ -258,7 +258,6 @@ bar {
         tray_output primary
 
         colors {
-            #background $dark_neutral
             background $dark_neutral_trans
             statusline $tertiary
             separator $mid_neutral
@@ -268,11 +267,6 @@ bar {
             active_workspace   $dark_neutral_trans  $dark_neutral_trans $light_neutral
             inactive_workspace $dark_neutral_trans  $dark_neutral_trans $mid_neutral
             urgent_workspace   $dark_neutral_trans  $dark_neutral_trans $secondary
-
-            #focused_workspace  $dark_neutral  $dark_neutral  $primary
-            #active_workspace   $dark_neutral  $dark_neutral  $light_neutral
-            #inactive_workspace $dark_neutral  $dark_neutral  $mid_neutral
-            #urgent_workspace   $dark_neutral  $dark_neutral  $secondary
         }
 
         separator_symbol "|"
