@@ -138,19 +138,9 @@ set colorcolumn=80
 " Don't unindent on # (Useful for python programming)
 inoremap # X#
 
-" I never want to use a semicolon in normal mode
+" I never want to use a semicolon in normal mode unless it is used as Leader
 nnoremap ; :
 
-"hi OverLength   ctermbg=0 ctermfg=15
-"match OverLength /\%79v.\+/
-
-" Comment Character TODO later
-"autocmd BufRead *.cpp :let CmtChar=//   " C/C++
-"autocmd BufRead *.c :let CmtChar=//     " 
-"autocmd BufRead *.py :let CmtChar=#     " Python
-"autocmd BufRead *.sh :let CmtChar=#     " Bash
-"autocmd BufRead *.tex :let CmtChar=%    " LaTex
-"autocmd BufRead *.vimrc :let CmtChar="    " LaTex
 
 
 """""""""""""""""""""""""""""""
@@ -207,6 +197,8 @@ vmap <leader>8 "mdi**<Esc>h"mp
 " Wrap line and return to last point
 nmap <leader>g mgJvgq`g
 vnoremap <leader>g gq`g
+
+nnoremap <leader>t :SyntasticToggleMode<CR>
 
 
 """""""""""""""""""""""""""""""
