@@ -1,7 +1,21 @@
 #!/bin/sh
 lock() {
     #i3lock -c 000000 -e
-    i3lock -i /home/joshbeard/Pictures/Wallpapers/u-lock-heart.png -e
+    
+    IMAGE=/tmp/i3lock.png
+    SCREENSHOT="scrot $IMAGE"
+    ICON=~/Pictures/Wallpapers/u-lock-heart_icon.png
+    $SCREENSHOT
+    convert $IMAGE -scale 10% -scale 1000% $IMAGE
+
+    # Used if using a custom lock icon
+    #[[ -f $ICON ]] && convert $IMAGE $ICON -gravity center -composite -matte $IMAGE
+    #convert $IMAGE $ICON -gravity center -composite -matte $IMAGE
+
+    i3lock -i $IMAGE
+    rm $IMAGE
+
+    #i3lock -i /home/joshbeard/Pictures/Wallpapers/u-lock-heart.png -e
 }
 
 case "$1" in
