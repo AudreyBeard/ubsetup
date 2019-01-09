@@ -51,3 +51,6 @@ alias ssh-submitty='ssh beardj2@submitty.cs.rpi.edu'
 export SUBMITTY_PCR='/var/local/submitty/private_course_repositories/computational_vision'
 
 alias docker-start='sudo docker start -ia Project-1'
+
+alias package-wheel='python3 setup.py sdist bdist_wheel'
+alias package-upload='twine upload dist/*'

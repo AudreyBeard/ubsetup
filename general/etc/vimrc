@@ -118,6 +118,7 @@ set tabstop=4                       " Tab is width of four chars
 set sw=4                            " Python indentation
 set expandtab                       " Tab becomes spaces
 set number                          " Line numbers
+set relativenumber                  " Line numbers, relative to cursor position
 "set nonumber                        " Line numbers
 set smartindent                     " Indents smartly
 set showmatch                       " highlight matching brackets
@@ -126,7 +127,9 @@ set showcmd                         " Display # characters/lines in visual selec
 " Folding
 autocmd BufRead *.cpp :set fdm=syntax   " C/C++ folding
 autocmd BufRead *.c :set fdm=syntax     " 
+autocmd BufRead *.java :set fdm=syntax  " Java folding
 autocmd BufRead *.py :set fdm=indent    " Python folding
+autocmd BufRead *.tex :set fdm=indent   " LaTeX folding
 
 " Maximum text width coercion (for certain files) plus marker column 
 autocmd BufRead *.md  :set tw=79        " Auto-wrap text for Markdown,
