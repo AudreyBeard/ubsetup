@@ -35,8 +35,6 @@ imap <C-b><C-l> β
 imap <C-l><C-l> λ
 imap <C-b><C-p> •
 
-" Vimwiki code block
-imap {{{ {{{<Enter><Esc>i     <Esc>mbi<Enter>}}}<Esc><<`ba
 
 """""""""""""""""""""""""""""""
 "          Syntastic          "
@@ -123,6 +121,7 @@ set showcmd                         " Display # characters/lines in visual selec
 autocmd BufRead *.cpp :set fdm=syntax   " C/C++ folding
 autocmd BufRead *.c :set fdm=syntax     " 
 autocmd BufRead *.py :set fdm=indent    " Python folding
+autocmd BufRead *.wiki :set fdm=syntax  " VimWiki folding
 
 " Maximum text width coercion (for certain files) plus marker column 
 autocmd BufRead *.md  :set tw=79        " Auto-wrap text for Markdown,
@@ -201,6 +200,8 @@ vmap <leader>8 "mdi**<Esc>h"mp
 nmap <leader>g mgJvgq`g
 vnoremap <leader>g gq`g
 
+" Vimwiki code block
+imap {{{ {{{<Enter><Esc>i     <Esc>mbi<Enter>}}}<Esc><<`ba
 
 """""""""""""""""""""""""""""""
 "         Status Line         "
