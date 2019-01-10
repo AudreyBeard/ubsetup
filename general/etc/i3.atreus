@@ -183,12 +183,12 @@ bindsym $sup+Shift+r restart
 
 #--  Custom Commands --#
 # run commonly-used programs 
-#bindsym $sup+Shift+c exec google-chrome
-bindsym $sup+Shift+f exec firefox
-bindsym $sup+Shift+p exec firefox --private-window
-bindsym $sup+Shift+t exec thunderbird
-#bindsym $sup+Shift+s exec signal-desktop
-bindsym $sup+Shift+b exec ~/Packages/Popcorn-Time
+bindsym $sup+$mod_1+c exec google-chrome
+bindsym $sup+$mod_1+f exec firefox
+bindsym $sup+$mod_1+p exec firefox --private-window
+bindsym $sup+$mod_1+t exec thunderbird
+bindsym $sup+$mod_1+s exec signal-desktop
+bindsym $sup+$mod_1+b exec ~/Packages/Popcorn-Time
 
 
 # Screenshot (selection)

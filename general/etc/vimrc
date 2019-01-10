@@ -102,7 +102,11 @@ function! InsertStatuslineColor(mode)
   endif
 endfunction
 
-
+"function! Dvorak()
+"  let s:dvorak_mode = exists('s:dvorak_mode') ? !s:dvorak_mode : 1
+"  if s:dvorak_mode
+"      nnoremap d h
+"      nnoremap 
 """""""""""""""""""""""""""""""
 "          Behavior           "
 """""""""""""""""""""""""""""""
@@ -112,6 +116,7 @@ set tabstop=4                       " Tab is width of four chars
 set sw=4                            " Python indentation
 set expandtab                       " Tab becomes spaces
 set number                          " Line numbers
+set relativenumber                  " Line numbers, relative to cursor position
 "set nonumber                        " Line numbers
 set smartindent                     " Indents smartly
 set showmatch                       " highlight matching brackets
@@ -120,8 +125,10 @@ set showcmd                         " Display # characters/lines in visual selec
 " Folding
 autocmd BufRead *.cpp :set fdm=syntax   " C/C++ folding
 autocmd BufRead *.c :set fdm=syntax     " 
+autocmd BufRead *.java :set fdm=syntax  " Java folding
 autocmd BufRead *.py :set fdm=indent    " Python folding
 autocmd BufRead *.wiki :set fdm=syntax  " VimWiki folding
+autocmd BufRead *.tex :set fdm=indent   " LaTeX folding
 
 " Maximum text width coercion (for certain files) plus marker column 
 autocmd BufRead *.md  :set tw=79        " Auto-wrap text for Markdown,
@@ -133,16 +140,9 @@ set colorcolumn=80
 " Don't unindent on # (Useful for python programming)
 inoremap # X#
 
-"hi OverLength   ctermbg=0 ctermfg=15
-"match OverLength /\%79v.\+/
+" I never want to use a semicolon in normal mode unless it is used as Leader
+nnoremap ; :
 
-" Comment Character TODO later
-"autocmd BufRead *.cpp :let CmtChar=//   " C/C++
-"autocmd BufRead *.c :let CmtChar=//     " 
-"autocmd BufRead *.py :let CmtChar=#     " Python
-"autocmd BufRead *.sh :let CmtChar=#     " Bash
-"autocmd BufRead *.tex :let CmtChar=%    " LaTex
-"autocmd BufRead *.vimrc :let CmtChar="    " LaTex
 
 
 """""""""""""""""""""""""""""""
@@ -202,6 +202,9 @@ vnoremap <leader>g gq`g
 
 " Vimwiki code block
 imap {{{ {{{<Enter><Esc>i     <Esc>mbi<Enter>}}}<Esc><<`ba
+
+nnoremap <leader>t :SyntasticToggleMode<CR>
+
 
 """""""""""""""""""""""""""""""
 "         Status Line         "
