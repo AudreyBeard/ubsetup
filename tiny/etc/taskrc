@@ -38,3 +38,5 @@ color.uda.priority.none=color7
 #include /usr/share/task/solarized-light-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
 
+urgency.annotations.coefficient=0.0
+urgency.due.coefficient=15.0
