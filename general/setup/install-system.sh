@@ -14,9 +14,6 @@ sudo apt-get install i3-wm dunst i3lock i3status suckless-tools -y
 # Magic Wormhole for transfering files easily
 sudo apt-get install magic-wormhole -y
 
-# Python stuff
-# Install pip
-sudo apt-get install -y python3-pip
 
 # Install productivity tools for LaTeX and MarkDown
 ./install-latex-tools.sh
