@@ -10,6 +10,9 @@ mkdir -p $HOME/.venv
 cd $HOME/.venv
 python3 -m venv Py3
 
+echo '# Default to using a venv' >> ~/.bashrc
+echo 'source $HOME/.venv/Py3/bin/activate' >> ~/.bashrc
+
 source $HOME/.venv/Py3/bin/activate
 pip install IPython
 pip install scipy

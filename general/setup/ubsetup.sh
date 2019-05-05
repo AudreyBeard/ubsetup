@@ -19,6 +19,8 @@ echo 'function gitclone-ssh () {' >> ~/.bashrc
 echo '  git clone git@github.com:"$@".git' >> ~/.bashrc
 echo '}' >> ~/.bashrc
 
+echo '# Show tasks when opening a terminal' >> ~/.bashrc
+echo 'task' >> ~/.bashrc
 
 # Make a .local directory
 mkdir -p ~/.local
