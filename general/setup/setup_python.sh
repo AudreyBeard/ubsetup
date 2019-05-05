@@ -9,3 +9,7 @@ pip3 install virtualenv
 mkdir -p $HOME/.venv
 cd $HOME/.venv
 python3 -m venv Py3
+
+source $HOME/.venv/Py3/bin/activate
+pip install IPython
+pip install scipy
