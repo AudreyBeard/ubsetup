@@ -15,4 +15,4 @@ echo 'source $HOME/.venv/Py3/bin/activate' >> ~/.bashrc
 
 source $HOME/.venv/Py3/bin/activate
 pip install IPython
-pip install scipy
+pip install scipy numpy
