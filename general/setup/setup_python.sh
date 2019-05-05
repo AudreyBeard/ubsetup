@@ -14,5 +14,5 @@ echo '# Default to using a venv' >> ~/.bashrc
 echo 'source $HOME/.venv/Py3/bin/activate' >> ~/.bashrc
 
 source $HOME/.venv/Py3/bin/activate
-pip install IPython
+pip install IPython ipdb
 pip install scipy numpy
