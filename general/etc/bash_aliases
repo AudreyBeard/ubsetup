@@ -37,7 +37,7 @@ alias hdmi-off='xrandr --output HDMI-1-2 --off'
 alias lab-screen='xrandr --output HDMI-1-2 --mode 1920x1200 --right-of eDP-1-1'
 alias home-screen='xrandr --output HDMI-1-2 --mode 1920x1080 --right-of eDP-1-1'
 
-alias another='urxvt &' 
+#alias another='urxvt &' 
 
 alias tasks='git -C ~/code/task pull; task next'
 alias task-push='git -C ~/code/task commit -am "updates"; git -C ~/code/task push'

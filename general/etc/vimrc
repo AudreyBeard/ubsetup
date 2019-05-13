@@ -1,4 +1,13 @@
 """""""""""""""""""""""""""""""
+"           gvim              "
+"""""""""""""""""""""""""""""""
+colorscheme slate
+if has ('gui_running')
+    set guifont=Noto\ Mono\ 12
+    "set guifont="Noto Mono:h12"
+endif
+
+"""""""""""""""""""""""""""""""
 "           VimWiki           "
 """""""""""""""""""""""""""""""
 set nocompatible

@@ -11,7 +11,7 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=~/.task
+data.location=~/code/task/.task
 
 # Colors
 color.blocking=color0 on color15
