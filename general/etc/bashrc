@@ -116,28 +116,15 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-# CS: combines cd and ls in one easy command
-function cs () {
-  cd "$@" && ls
-}
-# GITCLONE: makes git cloning easier and faster
-function gitclone-https () {
-  git clone https://github.com/"$@"
-}
-# GITCLONE: makes git cloning easier and faster
-function gitclone-ssh () {
-  git clone git@github.com:"$@".git
+# cd + ls = cs
+function cs() {
+    cd "$@" && ls
 }
 
-PI_IPADDR=192.168.42.1
-OPSYS_HW="/home/joshbeard/Dropbox/opsys_cs-6140/hw3/os-hw3.pdf"
+function workon() {
+    source "$HOME/.venv/$@/bin/activate"
+}
 
-#echo "Attempting to pull task list from GitHub..."
-#git -C ~/code/task pull && task next
-echo "Tasks:"
-task next
+task
 
-
-# Carbonized color scheme
-#[ -n "$PS1" ] && sh ~/.nightshell/office-dark
+source $HOME/.venv/Py3/bin/activate
