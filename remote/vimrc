@@ -1,4 +1,13 @@
 """""""""""""""""""""""""""""""
+"           gvim              "
+"""""""""""""""""""""""""""""""
+"colorscheme slate
+if has ('gui_running')
+    set guifont=Noto\ Mono\ 12
+    "set guifont="Noto Mono:h12"
+endif
+
+"""""""""""""""""""""""""""""""
 "           VimWiki           "
 """""""""""""""""""""""""""""""
 set nocompatible
@@ -6,20 +15,54 @@ filetype plugin on
 syntax on
 
 """""""""""""""""""""""""""""""
+"           Symbols           "
+"""""""""""""""""""""""""""""""
+
+" Operators
+imap <C-l><C-e> ≤
+imap <C-g><C-e> ≥
+imap <C-a><C-e> ≅
+imap <C-n><C-e> ≠
+imap <C-c><C-b> ∈
+imap <C-d><C-a> ≡
+imap <C-e><C-x> ∃
+imap <C-a><C-n> ∧
+imap <C-o><C-r> ∨
+imap <C-x><C-o> ⊕
+imap <C-f><C-a> ∀
+imap <C-s><C-b> ⊂
+imap <C-o><C-u> ∪
+imap <C-o><C-i> ∩
+
+"Identifiers
+imap <C-d><C-l> δ
+imap <C-d><C-u> Δ
+imap <C-r><C-l> ρ
+imap <C-e><C-l> ε
+imap <C-a><C-l> α
+imap <C-b><C-l> β
+imap <C-l><C-l> λ
+imap <C-b><C-p> •
+
+
+"""""""""""""""""""""""""""""""
 "          Syntastic          "
 """""""""""""""""""""""""""""""
+"filetype off
+"filetype plugin indent on
+
 execute pathogen#infect()
 
-let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_checkers = ['flake8']
 set statusline=
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 
 
 " Scripting Vim in Python 
@@ -57,28 +100,36 @@ EOF
 " Normal StatusLine color
 function! NormalStatusLineColor()
   " status line for ACTIVE view
-  highlight statusline ctermbg=7 ctermfg=none cterm=bold
+  highlight statusline ctermbg=10 ctermfg=0 cterm=bold
   " status line for INACTIVE view
-  highlight StatusLineNC ctermbg=none ctermfg=0 cterm=bold
+  highlight StatusLineNC ctermbg=8 ctermfg=10 cterm=bold
 endfunction
 
 " Change statusline color on insert, replace
 function! InsertStatuslineColor(mode)
   if a:mode == 'i'
-    hi statusline ctermbg=7 ctermfg=6 cterm=bold
+    hi statusline ctermbg=none ctermfg=6 cterm=bold
   elseif a:mode == 'r'
-    hi statusline ctermbg=7 ctermfg=1 cterm=bold
+    hi statusline ctermbg=none ctermfg=1 cterm=bold
   endif
 endfunction
 
-
+"function! Dvorak()
+"  let s:dvorak_mode = exists('s:dvorak_mode') ? !s:dvorak_mode : 1
+"  if s:dvorak_mode
+"      nnoremap d h
+"      nnoremap 
 """""""""""""""""""""""""""""""
 "          Behavior           "
 """""""""""""""""""""""""""""""
+let mapleader=";"
+
 set tabstop=4                       " Tab is width of four chars
 set sw=4                            " Python indentation
 set expandtab                       " Tab becomes spaces
 set number                          " Line numbers
+set relativenumber                  " Line numbers, relative to cursor position
+"set nonumber                        " Line numbers
 set smartindent                     " Indents smartly
 set showmatch                       " highlight matching brackets
 set showcmd                         " Display # characters/lines in visual selection
@@ -86,7 +137,10 @@ set showcmd                         " Display # characters/lines in visual selec
 " Folding
 autocmd BufRead *.cpp :set fdm=syntax   " C/C++ folding
 autocmd BufRead *.c :set fdm=syntax     " 
+autocmd BufRead *.java :set fdm=syntax  " Java folding
 autocmd BufRead *.py :set fdm=indent    " Python folding
+autocmd BufRead *.wiki :set fdm=syntax  " VimWiki folding
+autocmd BufRead *.tex :set fdm=indent   " LaTeX folding
 
 " Maximum text width coercion (for certain files) plus marker column 
 autocmd BufRead *.md  :set tw=79        " Auto-wrap text for Markdown,
@@ -95,18 +149,21 @@ autocmd BufRead *.txt :set tw=79        "  Text files
 autocmd BufRead *.wiki :set tw=79       "  vimwiki files
 set colorcolumn=80
 
-" More distracting method of overlength warning - highlight all text after certain length
-"hi OverLength   ctermbg=0 ctermfg=15
-"match OverLength /\%79v.\+/
+" Don't unindent on # (Useful for python programming)
+inoremap # X#
+
+" I never want to use a semicolon in normal mode unless it is used as Leader
+nnoremap ; :
+
 
 
 """""""""""""""""""""""""""""""
 "     General Apprearance     "
 """""""""""""""""""""""""""""""
-hi linenr      ctermbg=none    ctermfg=7                    " Line numbers
-hi Visual      ctermbg=8       ctermfg=11                   " Visual selection 
-hi Folded      ctermbg=none    ctermfg=0    cterm=bold      " Folds
-hi ColorColumn ctermbg=7
+hi linenr      ctermbg=none    ctermfg=7     " Line numbers
+hi Visual      ctermbg=8       ctermfg=11    " Visual selection 
+hi Folded      ctermbg=none    ctermfg=15    " Folds
+hi ColorColumn ctermbg=8
 
 
 """""""""""""""""""""""""""""""
@@ -124,28 +181,42 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Compile (in dir containing file) and view in mupdf
+" Use \c to comile (in place file lives) and \v to view in mupdf
 nnoremap <leader>c :w<CR>:!rubber --inplace --pdf --warn all %<CR>
 nnoremap <leader>v :!mupdf %:r.pdf &<CR><CR>
 "nnoremap <leader>v :!mupdf -C FFFFDA %:r.pdf &<CR><CR>
 
-" Toggle search highlighting
+" Pressing \s toggles search highlighting
 nnoremap <leader>s :set hlsearch! hlsearch?<CR>
 
-" Insert newline without _noticeably_ exiting normal mode
-nnoremap <CR> myo<Esc>`yj
-
-"nnoremap <leader>j myo<Esc>`y
-"nnoremap <leader>k myO<Esc>`y
-
-" Don't unindent on # 
-inoremap # X#
+" pressing CTRL-o or CTRL-SHIFT-o in regular mode adds newline
+"nnoremap <CR> myo<Esc>`y
+nnoremap <leader>j myo<Esc>`y
+nnoremap <leader>k myO<Esc>`y
 
 " A proxy for inter-window copy/pasting
 vmap <leader>y :w! /tmp/vimtmp<CR>
 nmap <leader>p :r! cat /tmp/vimtmp<CR>
 
-nnoremap <leader>d :Vex<CR> :vertical resize 25
+nnoremap <leader>f :NERDTreeToggle<CR>
+
+" Mouse scrollwheel
+set mouse=a
+
+" Wrap visually selected text with $
+"vmap <leader>4 yb/<C-r>0<CR>i$<Esc>//e<C-r>0<CR>a$<Esc>
+vmap <leader>4 "mdi$$<Esc>h"mp
+vmap <leader>8 "mdi**<Esc>h"mp
+
+" Wrap line and return to last point
+nmap <leader>g mgJvgq`g
+vnoremap <leader>g gq`g
+
+" Vimwiki code block
+imap {{{ {{{<Enter><Esc>i     <Esc>mbi<Enter>}}}<Esc><<`ba
+
+nnoremap <leader>t :SyntasticToggleMode<CR>
+
 
 """""""""""""""""""""""""""""""
 "         Status Line         "
