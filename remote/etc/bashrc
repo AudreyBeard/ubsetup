@@ -128,3 +128,4 @@ function workon() {
 task
 
 source $HOME/.venv/Py3/bin/activate
+export GIT_EDITOR=vim

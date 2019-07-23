@@ -10,7 +10,7 @@ source $(sudo find / -iname virtualenvwrapper.sh)
 mkvirtualenv Py3 -p $(which python3)
 workon Py3
 
-pip install IPython ipdb scipy numpy torch torchvision pandas pillow flake8
+pip install IPython ipdb scipy numpy torch torchvision pandas pillow flake8 virtualenvwrapper
 
 echo '' >> ~/.bashrc
 echo 'workon Py3' >> ~/.bashrc
