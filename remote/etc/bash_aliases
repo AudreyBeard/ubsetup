@@ -54,3 +54,6 @@ alias docker-start='sudo docker start -ia Project-1'
 
 alias package-wheel='python3 setup.py sdist bdist_wheel'
 alias package-upload='twine upload dist/*'
+
+alias tmux-new='tmux new -s'
+alias tmux-attach='tmux attach -t'
