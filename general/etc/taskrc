@@ -5,8 +5,7 @@
 
 # Here is an example of entries that use the default, override and blank values
 #   variable=foo   -- By specifying a value, this overrides the default
-#   variable=      -- By specifying no value, this means no default
-#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+#   variable=      -- By specifying no value, this means no default #   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
 
 # Use the command 'task show' to see all defaults and overrides
 
@@ -37,4 +36,12 @@ color.uda.priority.none=color7
 #include /usr/share/doc/task/rc/solarized-dark-256.theme
 #include /usr/share/task/solarized-light-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
+context.TRASH=project:TRASH
+#context=TRASH
 
+taskd.certificate=~/.ssh/private.certificate_intheam.pem
+taskd.key=~/.ssh/private.key_intheam.pem
+taskd.ca=~/.ssh/ca.cert_intheam.pem
+taskd.server=taskwarrior.inthe.am:53589
+taskd.credentials=inthe_am/audrey.s.beard/6af5c4bc-b86b-4277-a5c0-f62610334f07
+taskd.trust=ignore hostname
