@@ -23,4 +23,4 @@ git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 cp -r ~/.vim/bundle/nerdtree/autoload ~/.vim/autoload/nerdtree
 
 # Go back
-cd $HERE/setup
+cd $HERE

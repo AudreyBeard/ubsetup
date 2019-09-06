@@ -1,5 +1,5 @@
 #!/bin/bash
-HERE=$PWD
+HERE=$HOME/code/ubsetup/general
 PARENT_DIR=$HOME/.local
 
 # All user configuration files live in ~/etc
