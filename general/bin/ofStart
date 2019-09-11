@@ -1,0 +1,88 @@
+#!/bin/sh
+
+# ofStart
+# Usage:
+#   ofStart [project_name]
+# Requires:
+#   tmux
+#   vim (or another command-line editor, just make sure you change the variable EDITOR
+#   That you have openFrameworks set up and are use the projectGenerator app
+
+# This script primarily starts up a horizontally-split tmux session in the openFrameworks directory.
+# Additional functionality:
+# - If project_name is given:
+#   - If project_name exists:
+#     - Navigate to that directory, start up a tmux session called oF-<project_name>
+#   - Else:
+#     - Make specified project_name directory in the apps directory
+#     - Copy files from the empty example template given by oF
+#     - Run projectGenerator to get it ready for compilation
+
+# NOTE:
+# I put this script in ~/.local/bin so I can just call ofStart [project_name]
+# I assume you give it one argument, I haven't tested under a
+
+
+# Variables
+HERE=$PWD
+OF_ROOT=$HOME/code/openFrameworks
+OF_TEMPLATE_DIR=$OF_ROOT/examples/templates/emptyExample
+OF_PG_BINARY=$OF_ROOT/apps/projectGenerator/commandLine/bin/projectGenerator
+TMUX_SESSION_NAME=oF
+
+# Feel free to change to your preferred command-line editor
+EDITOR=vim
+FILE_TO_EDIT=ofApp.cpp
+
+# If given exactly one argument...
+if [ "$#" -eq 1 ]; then
+
+  # ... then assume that's the project we want to work on
+  TARGET_DIR=$OF_ROOT/apps/"$@"
+  TMUX_SESSION_NAME="$TMUX_SESSION_NAME-$@"
+  
+  # If that project doesn't exist...
+  if [ ! -e $TARGET_DIR ]; then
+
+    # Make it, copy the blank templates, and run the projectGenerator
+    mkdir $TARGET_DIR
+    cp -r $OF_TEMPLATE_DIR/* $TARGET_DIR
+    $OF_PG_BINARY -o$(echo $OF_ROOT) $TARGET_DIR
+
+  fi  
+else
+  # If no arguments (or more than one), just go to oF root dir
+  TARGET_DIR=$OF_ROOT
+fi
+
+# Change directory to project (or oF)
+cd $TARGET_DIR
+
+# Start tmux:
+# If project was specified:
+# - new session, detaching it from any existing clients if necessary
+# - Clear screen, go to ./src, spin up editor of choice on $FILE_TO_EDIT
+# - Split window horizontally and go to compile pane
+# - Clear that window, give instructions on how to compile and run
+# - Select edit pane
+# OTW:
+# - new session, detaching it from any existing clients if necessary
+# - Split window horizontally and go to compile pane
+# - Select edit pane
+if [ "$#" -gt 0 ] ; then
+  tmux new-session -ds $TMUX_SESSION_NAME\; \
+    send-keys "clear; cd src; $EDITOR $FILE_TO_EDIT" C-m \; \
+    split-window -h \; \
+    send-keys 'clear; echo "to compile:"; echo "  make [-j NUMBER_OF_PROCESSORS]"; echo "  make RunRelease"; echo; echo' C-m \; \
+    select-pane -t 0 \;
+else
+  tmux new-session -ds $TMUX_SESSION_NAME\; \
+    split-window -h \; \
+    select-pane -t 0 \;
+fi
+
+# Go back to original directory for when we leave tmux
+cd $HERE
+
+# Attach previously-created tmux session
+tmux attach-session -t $TMUX_SESSION_NAME
