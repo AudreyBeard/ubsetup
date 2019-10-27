@@ -1,9 +1,20 @@
 #!/bin/bash
 # Python stuff
+# Which OS am I on?
+case $(uname -a) in
+  Linux*)  OS=linux;;
+  Darwin*) OS=mac;;
+  *)       OS=unknown 
+esac
+
+if [ OS == linux ]; then
+  INSTALL_CMD="apt-get install"
+elif [ OS == mac ]; then
+  INSTALL_CMD="brew install"
+fi
+
 # Install pip
-sudo apt-get install -y python3-pip
-sudo apt-get install -y python3-venv
-sudo apt-get install -y ipython3
+$(sudo $INSTALL_CMD -y python3-pip python3-venv)
 pip3 install virtualenv
 pip3 install virtualenvwrapper
 

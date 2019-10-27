@@ -13,6 +13,7 @@ cd ~/.vim/bundle
 # PEP8 linter
 pip3 install flake8
 git clone --depth=1 https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/syntastic
+cp -r ~/.vim/bundle/syntastic/autoload ~/.vim/autoload/syntastic
 
 # Vimwiki!
 git clone https://github.com/vimwiki/vimwiki.git ~/.vim/bundle/vimwiki
