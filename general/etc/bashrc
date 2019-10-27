@@ -128,4 +128,64 @@ function workon() {
 task
 
 source $HOME/.venv/Py3/bin/activate
-export GIT_EDITOR=vim
+
+export TASK_SYNC_MSG=/tmp/task_sync_msg.txt
+export NTASKS_SINCE_SYNC=0
+export TASKS_PER_SYNC=5
+
+# Behaves normally, but adds this machine's username to the tag and uses the proper taskrc file
+function trask() {
+  if [ "$#" -eq 0 ]; then
+    # If no args passed, sync then show
+    #task sync rc:~/.taskrc_trash && task +"$USER" rc:~/.taskrc_trash
+    task +"$USER" rc:~/.taskrc_trash
+  else
+    # Get command and project name
+    TASK_CMD=$@
+    #PROJECT_NAME=$(echo $TASK_CMD | sed -e 's/.*project://' | sed -e 's/\s.*//')
+    #if [ -z $PROJECT_NAME ]; then
+    #  PROJECT_NAME="To Do"
+    #fi
+
+    # OTW, perform operation
+    #task "$@" +"$USER" intheamtrellolistname:"$PROJECT_NAME" rc:~/.taskrc_trash
+    task "$@" +"$USER" rc:~/.taskrc_trash
+
+    # If we recently synced, just keep track
+    if [ $NTASKS_SINCE_SYNC -lt $TASKS_PER_SYNC ]; then
+      export NTASKS_SINCE_SYNC=$(($NTASKS_SINCE_SYNC+1))
+
+    # If we haven't synced recently, sync and show updates
+    else
+      export NTASKS_SINCE_SYNC=0
+      task sync rc:~/.taskrc_trash &> $TASK_SYNC_MSG
+      if [ $(cat $TASK_SYNC_MSG | grep -ic "[1-9] change" ) -gt 0 ]; then
+        task +"$USER" rc:~/.taskrc_trash
+      fi
+    fi
+  fi
+}
+
+function trask-all() {
+  if [ "$#" -eq 0 ]; then
+    # If no args passed, sync then show
+    task sync rc:~/.taskrc_trash && task rc:~/.taskrc_trash
+  else
+    # OTW, perform operation, sync, then show if any changes
+    task "$@" rc:~/.taskrc_trash
+    # If we recently synced, just keep track
+    if [ $NTASKS_SINCE_SYNC -lt $TASKS_PER_SYNC ]; then
+      export NTASKS_SINCE_SYNC=$(($NTASKS_SINCE_SYNC+1))
+
+    # If we haven't synced recently, sync and show updates
+    else
+      export NTASKS_SINCE_SYNC=0
+      task sync rc:~/.taskrc_trash &> $TASK_SYNC_MSG
+      if [ $(cat $TASK_SYNC_MSG | grep -ic "[1-9] change" ) -gt 0 ]; then
+        task rc:~/.taskrc_trash
+      fi
+    fi
+  fi
+}
+
+alias trask-me="trask"

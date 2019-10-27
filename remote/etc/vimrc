@@ -1,10 +1,10 @@
 """""""""""""""""""""""""""""""
 "           gvim              "
 """""""""""""""""""""""""""""""
-"colorscheme slate
+colorscheme slate
 if has ('gui_running')
-    set guifont=Noto\ Mono\ 12
-    "set guifont="Noto Mono:h12"
+    "set guifont=Noto\ Mono\ 12
+    set guifont=Ubuntu\ Mono\ 14
 endif
 
 """""""""""""""""""""""""""""""
@@ -48,21 +48,18 @@ imap <C-b><C-p> •
 """""""""""""""""""""""""""""""
 "          Syntastic          "
 """""""""""""""""""""""""""""""
-"filetype off
-"filetype plugin indent on
-
 execute pathogen#infect()
 
-let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_checkers=['flake8']
 set statusline=
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 
 
 " Scripting Vim in Python 
@@ -100,15 +97,15 @@ EOF
 " Normal StatusLine color
 function! NormalStatusLineColor()
   " status line for ACTIVE view
-  highlight statusline ctermbg=10 ctermfg=0 cterm=bold
+  highlight statusline   ctermbg=10 ctermfg=6  cterm=bold
   " status line for INACTIVE view
-  highlight StatusLineNC ctermbg=8 ctermfg=10 cterm=bold
+  highlight StatusLineNC ctermbg=10  ctermfg=8
 endfunction
 
 " Change statusline color on insert, replace
 function! InsertStatuslineColor(mode)
   if a:mode == 'i'
-    hi statusline ctermbg=none ctermfg=6 cterm=bold
+    hi statusline ctermbg=none ctermfg=3 cterm=bold
   elseif a:mode == 'r'
     hi statusline ctermbg=none ctermfg=1 cterm=bold
   endif
@@ -139,14 +136,14 @@ autocmd BufRead *.cpp :set fdm=syntax   " C/C++ folding
 autocmd BufRead *.c :set fdm=syntax     " 
 autocmd BufRead *.java :set fdm=syntax  " Java folding
 autocmd BufRead *.py :set fdm=indent    " Python folding
-autocmd BufRead *.wiki :set fdm=syntax  " VimWiki folding
+autocmd BufRead *.wiki :set fdm=indent  " VimWiki folding
 autocmd BufRead *.tex :set fdm=indent   " LaTeX folding
 
 " Maximum text width coercion (for certain files) plus marker column 
 autocmd BufRead *.md  :set tw=79        " Auto-wrap text for Markdown,
 autocmd BufRead *.tex :set tw=79        "  LaTex, and
 autocmd BufRead *.txt :set tw=79        "  Text files
-autocmd BufRead *.wiki :set tw=79       "  vimwiki files
+"autocmd BufRead *.wiki :set tw=79       "  vimwiki files
 set colorcolumn=80
 
 " Don't unindent on # (Useful for python programming)
@@ -180,6 +177,10 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+noremap <C-Tab> :<C-U>tabnext<CR>
+noremap <C-S-Tab> :<C-U>tabprevious<CR>
+" Construct vimwiki graph
+nnoremap <leader>x :w<CR>:!python $HOME/code/vimwiki_link_network/vimwiki_link_network.py "%:p" --save<CR>
 
 " Use \c to comile (in place file lives) and \v to view in mupdf
 nnoremap <leader>c :w<CR>:!rubber --inplace --pdf --warn all %<CR>
