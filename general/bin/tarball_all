@@ -1,0 +1,18 @@
+# Tars up one file with the most reasonable name: FILENAME.tar.gz
+function tar-one () {
+    tar -zcvf "$1.tar.gz" "$1"
+}
+
+# Tars up everything in current directory
+function tar-all () {
+    # List everything here, drop in temp file
+    ls > tmp.txt
+    # For every file in directory, tar it up
+    while read LINE; do
+        tar-one "$LINE"
+    done < tmp.txt
+    # Toss old file
+    rm tmp.txt
+}
+
+tar-all
